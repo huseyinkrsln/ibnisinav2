@@ -357,6 +357,69 @@
             lucide.createIcons();
         });
     </script>
+
+<!-- Full Screen Mobile Menu Start -->
+<div id="fs-mobile-menu-overlay">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; margin-bottom: 10px; border-bottom: 1px solid #eee;">
+        <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="Logo" style="height: 40px; object-fit: contain;">
+        <button id="fs-mobile-menu-close" style="background: none; border: none; font-size: 32px; cursor: pointer; color: #333;">&times;</button>
+    </div>
+    <a href="index.html">Anasayfa</a>
+    <a href="departmanlar.html">T&#305;bbi Birimler</a>
+    <a href="doktorlar.html">Hekimlerimiz</a>
+    <a href="hasta-rehberi.html">Hasta Rehberi</a>
+    <a href="iletisim.html">&#304;leti&#351;im</a>
+</div>
+<style>
+    #fs-mobile-menu-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: white;
+        z-index: 999999;
+        display: none;
+        flex-direction: column;
+        padding: 20px;
+    }
+    #fs-mobile-menu-overlay.active {
+        display: flex !important;
+    }
+    #fs-mobile-menu-overlay a {
+        padding: 15px 5px;
+        font-size: 1.15rem;
+        font-weight: 600;
+        border-bottom: 1px solid #f5f5f5;
+        color: #1e293b !important;
+        text-decoration: none;
+        display: block;
+    }
+    @media (max-width: 768px) {
+        .nav-links { display: none !important; }
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var menuBtn = document.getElementById('menuToggle');
+        if (menuBtn) {
+            var newMenuBtn = menuBtn.cloneNode(true);
+            menuBtn.parentNode.replaceChild(newMenuBtn, menuBtn);
+            
+            newMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('fs-mobile-menu-overlay').classList.add('active');
+            });
+        }
+        
+        var closeBtn = document.getElementById('fs-mobile-menu-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('fs-mobile-menu-overlay').classList.remove('active');
+            });
+        }
+    });
+</script>
+<!-- Full Screen Mobile Menu End -->
 </body>
+
 </html>
 
