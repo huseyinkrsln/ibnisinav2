@@ -965,3 +965,68 @@ footer {
     }
 }
 
+/* Comprehensive Mobile Overrides */
+@media (max-width: 1024px) {
+    .quick-grid, .unit-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+    .unit-main-card, .unit-side-card, .unit-sub-card {
+        grid-column: span 1 !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+    .quick-item {
+        border-right: none !important;
+        border-bottom: 1px solid var(--border) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px !important;
+    }
+    .hero-right, .hero-image {
+        display: none !important; /* Resimleri mobilde gizle veya alta al */
+    }
+    .hero {
+        padding: 40px 0 !important;
+    }
+    h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    h2 {
+        font-size: 1.75rem !important;
+    }
+    .section {
+        padding: 40px 0 !important;
+    }
+    .hero-left, .hero-content {
+        padding: 20px 0 !important;
+    }
+    .hero-btns {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    .hero-btns .btn {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    .hero-stats {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+    }
+    .doctor-card, .department-card, .bulletin-card, .contact-card {
+        width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+    table {
+        display: block !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+    }
+}
+
