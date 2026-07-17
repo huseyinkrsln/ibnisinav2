@@ -1029,5 +1029,24 @@ footer {
         overflow-x: auto !important;
         white-space: nowrap !important;
     }
+    
+    /* is-basvurusu.html Overrides */
+    .policy-grid, .why-us-grid, .positions-grid, .form-grid, div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+    }
+    .why-us-card[style*="grid-column"] {
+        grid-column: span 1 !important;
+        flex-direction: column !important;
+    }
+    
+    /* Hamburger Menu Force Visible */
+    .menu-toggle {
+        display: block !important;
+        position: relative;
+        z-index: 1001;
+    }
+    .nav-actions {
+        display: flex !important;
+    }
 }
 
