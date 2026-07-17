@@ -1047,6 +1047,29 @@ footer {
     }
     .nav-actions {
         display: flex !important;
+        gap: 8px !important;
+    }
+    .nav-actions > div {
+        display: none !important; /* TR|EN gizle */
+    }
+    .nav-actions > a span {
+        display: none !important; /* Tel numarasi yazi kismini gizle, sadece ikon kalsin */
+    }
+    
+    .nav-links {
+        display: none !important; 
+    }
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 70px !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: white !important;
+        padding: 20px !important;
+        z-index: 1000 !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
     }
 }
 
