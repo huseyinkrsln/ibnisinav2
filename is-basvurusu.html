@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İş Başvurusu & Kariyer - İbni Sina Hastanesi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .career-hero {
+            position: relative;
+            height: 520px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDrj3sJ7RjibUoH1xkQ3TCy5q2GHGcjX-1dbFjURee9MgPuW93x92yQczEGdMuAC3D8llqUWF8NQUZB5dc1QJoFfQPG4iU-VDqsWVe5RaTJgY4VjKpCbsYzA48XKJl3amx8bjBhGX8lz5JLqwgqaamxl567lN182Yqz_SMsBOIF3cj8v54eOqLJ3ueu12ocjzYZ38TyM0-RsgmncBkiU28ArUWiWYVevih7BHTu_p1SQl9Bz6xdW7zm');
+            background-size: cover;
+            background-position: center;
+        }
+        .policy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .policy-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .policy-img-circle {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid white;
+            box-shadow: var(--shadow-lg);
+        }
+        .policy-img-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .why-us-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .why-us-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .why-us-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        .why-us-primary h3 {
+            color: white;
+        }
+        .why-us-primary p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .why-us-accent {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+        }
+        .why-us-accent h3 {
+            color: white;
+        }
+        .why-us-accent p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .position-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .position-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        .form-section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-top: 32px;
+        }
+        .form-section-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-input-text {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            outline: none;
+            transition: var(--transition);
+        }
+        .form-input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        .radio-box {
+            display: flex;
+            gap: 24px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+        }
+        @media (max-width: 1024px) {
+            .policy-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+            .positions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .policy-images {
+                grid-template-columns: 1fr;
+            }
+            .career-tabs {
+                flex-direction: column;
+            }
+        }
+        
+        /* Tab Styles */
+        .career-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 0 32px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        .tab-btn {
+            padding: 16px 24px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Dynamic Form Field Styles */
+        .dynamic-row {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .dynamic-row .remove-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #fee2e2;
+            color: #ef4444;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .dynamic-row .remove-btn:hover {
+            background: #fecaca;
+        }
+        .add-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e0f2fe;
+            color: #0284c7;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 24px;
+        }
+        .add-btn:hover {
+            background: #bae6fd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+        <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-info">
+                    <span><i data-lucide="phone"></i> 0328 813 50 10</span>
+                    <span><i data-lucide="mail"></i> info@ibnisinahastanesi.com</span>
+                </div>
+                <div class="top-bar-socials">
+                    <a href="https://www.facebook.com/pages/Osmaniye-%C3%96zel-%C4%B0bnisina-Hastanesi/132233293653245?fref=ts" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="http://twitter.com/ibnisinahastane" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osmaniye+Ozel+Ibni+Sina+Hastanesi" target="_blank" aria-label="Google Maps"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></a>
+                    <a href="https://www.instagram.com/osmaniyeibnisinahastanesi/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: var(--primary); cursor: pointer;">TR</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">|</span>
+                    <span style="font-weight: 500; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">EN</span>
+                </div>
+                <a href="tel:03288135010" style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="career-hero">
+        <div class="container">
+            <div style="max-width: 600px;">
+                <span style="font-weight: 700; color: var(--primary); background-color: var(--primary-light); padding: 6px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; display: inline-block; margin-bottom: 20px;">İBNİ SİNA HASTANESİ KARİYER</span>
+                <h1 style="color: var(--text-dark); font-size: 3rem; margin-bottom: 16px; line-height: 1.2;">Kariyeriniz Bizimle <span style="color: var(--primary);">Şekillensin</span></h1>
+                <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6; margin-bottom: 32px;">İbni Sina Hastanesi olarak, modern tıp teknolojilerini insani değerlerle birleştiriyor, ekibimize katılacak her bir profesyonelin gelişimine değer veriyoruz.</p>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="#application-form" class="btn btn-primary" style="padding: 14px 28px;">Hemen Başvur</a>
+                    <a href="#why-us" class="btn btn-secondary" style="padding: 14px 28px; background-color: white; border: 1px solid var(--border);">Neden Biz?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment Policy -->
+    <section class="section" style="background-color: var(--bg-main);">
+        <div class="container policy-grid">
+            <div>
+                <span style="font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 12px;">POLİTİKAMIZ</span>
+                <h2 style="font-size: 2.25rem; margin-bottom: 24px; text-align: left;">İşe Alım Politikamız</h2>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 32px;">
+                    Şirketimiz, Anayasa’nın 20. maddesine, KVK Kanunu’nun ilgili maddelerine uygun olarak, kişisel verilerin işlenmesi konusunda; hukuka ve dürüstlük kurallarına uygun, şeffaf bir süreç yürütmektedir. İnsan kaynakları politikalarımızın temelini; yetkinlik bazlı değerlendirme, sürekli gelişim ve çalışan memnuniyeti oluşturmaktadır.
+                </p>
+                
+                <div style="background-color: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; display: flex; gap: 16px; align-items: start; box-shadow: var(--shadow-sm);">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1rem; margin-bottom: 4px; font-weight: 700; color: var(--text-dark);">KVKK Uyumlu İK Süreçleri</h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Tüm başvurularınız 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında güvence altındadır.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="policy-images">
+                <div class="policy-img-circle">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj8cNo2jD_tzaJDgfUEQbNjaFJseTtbQDF4s4YQtkEFFewIuTc_v8esoFmW3UhGrRUQ7o75YtdQBRinlDpvISRHCkl8BF6Ne_yS_BkgtvuDUA43DBg4zIkp8GtkdD1vst-aS2wS4rILPH2mWBS3gkvEWtlKlMAv2TPTB5GY3Y0nA7m-08PQwjXKOF6JdgIbYMKzR6JOb9ZnNpYmocaYdvqhDwznuZVYQo_mqXhwVt-MNUD2c-YGel_" alt="Healthcare professional in laboratory">
+                </div>
+                <div class="policy-img-circle" style="margin-top: 40px;">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA93_8dslodkBwV4K5COUli6Ooth9Zo1i2eJ4UFMLqOONloxyrvAq6yREaDCuia9RMRkNU_X9qLkYXjjBdcgKsMWlGhh8Z-Z3GWwUpmGSNYu9t46kLhu901bq9w3Aiq8oWXeU8R1jJrErJ0QnJsiQvOZUDCagzsdKebFX4NvEb0yuOByZzJURUMBfdDzro4LZHTLX3wNU8yK1P92NtGnNq2BHsm2FHIP7u94djOdAFNzlDqDCERpiI1" alt="Nurse caring for patient">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="section" id="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Neden İbni Sina Hastanesi?</h2>
+                <p>Osmaniye'nin merkezinde, sağlıkta mükemmeliyetin adresi.</p>
+            </div>
+
+            <div class="why-us-grid">
+                <div class="why-us-card" style="grid-column: span 2;">
+                    <div style="color: var(--primary); margin-bottom: 24px;">
+                        <i data-lucide="microscope" style="width: 48px; height: 48px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Modern Teknoloji</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">En son tıbbi cihazlar ve dijital sağlık altyapısı ile çalışanlarımıza en verimli çalışma ortamını sunuyoruz.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-card why-us-primary">
+                    <div style="margin-bottom: 24px; color: white;">
+                        <i data-lucide="users" style="width: 48px; height: 48px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Profesyonel Ekip</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.5;">Alanında uzman hekimler ve tecrübeli sağlık personeli ile güçlü bir aile olmanın gururunu yaşıyoruz.</p>
+                    </div>
+                </div>
+
+                <div class="why-us-card why-us-accent">
+                    <div style="margin-bottom: 24px; color: white;">
+                        <i data-lucide="map-pin" style="width: 48px; height: 48px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Merkezi Lokasyon</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.5;">Osmaniye'nin kalbinde kolay ulaşım imkanları ile konforlu bir çalışma hayatı sizi bekliyor.</p>
+                    </div>
+                </div>
+
+                <div class="why-us-card" style="grid-column: span 2; display: flex; flex-direction: row; gap: 24px; align-items: center; background-color: var(--bg-main);">
+                    <div style="width: 72px; height: 72px; background-color: white; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--primary);">
+                        <i data-lucide="graduation-cap" style="width: 36px; height: 36px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Sürekli Eğitim</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Seminerler, kurslar ve sertifika programları ile kariyer yolculuğunuzda sizi destekliyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Positions -->
+    <section class="section" style="background-color: var(--bg-main);" id="open-positions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Açık Pozisyonlar</h2>
+                <p>Hastanemiz bünyesinde yer alan güncel iş fırsatlarını inceleyebilirsiniz.</p>
+            </div>
+
+            <div class="positions-grid">
+                <!-- Position 1 -->
+                <div class="position-card">
+                    <div>
+                        <span style="font-size: 0.75rem; font-weight: 700; color: var(--primary); background-color: var(--primary-light); padding: 4px 10px; border-radius: 12px; display: inline-block; margin-bottom: 16px; text-transform: uppercase;">Medikal</span>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Uzman Hemşire</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 24px;">Yataklı servislerde görevlendirilmek üzere, en az 2 yıl deneyimli çalışma arkadaşları arıyoruz.</p>
+                    </div>
+                    <a href="#application-form" onclick="setPostion('Hemşire')" class="btn btn-outline" style="justify-content: center; font-weight: 700; width: 100%;">Başvur</a>
+                </div>
+
+                <!-- Position 2 -->
+                <div class="position-card">
+                    <div>
+                        <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent); background-color: #e0f7fa; padding: 4px 10px; border-radius: 12px; display: inline-block; margin-bottom: 16px; text-transform: uppercase;">İdari</span>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Tıbbi Sekreter</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 24px;">Hasta karşılama ve kayıt süreçlerinde tecrübeli, iletişim becerileri yüksek ekip arkadaşları.</p>
+                    </div>
+                    <a href="#application-form" onclick="setPostion('Tıbbi Sekreter')" class="btn btn-outline" style="justify-content: center; font-weight: 700; width: 100%;">Başvur</a>
+                </div>
+
+                <!-- Position 3 -->
+                <div class="position-card">
+                    <div>
+                        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; background-color: #f1f5f9; padding: 4px 10px; border-radius: 12px; display: inline-block; margin-bottom: 16px; text-transform: uppercase;">Destek</span>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Temizlik Personeli</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 24px;">Hastane hijyen standartlarına hakim, titiz ve dinamik çalışma disiplinine sahip adaylar.</p>
+                    </div>
+                    <a href="#application-form" onclick="setPostion('Temizlik Personeli')" class="btn btn-outline" style="justify-content: center; font-weight: 700; width: 100%;">Başvur</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; color: var(--text-muted); font-style: italic; font-size: 0.95rem;">
+                Aradığınız pozisyonu bulamadınız mı? Genel başvuru formunu doldurarak özgeçmişinizi bırakabilirsiniz.
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="section" id="application-form">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-title">
+                <h2>Başvuru Formu</h2>
+                <p>Lütfen aşağıdaki alanları eksiksiz bir şekilde doldurunuz.</p>
+            </div>
+
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden;">
+                <div style="background-color: var(--secondary); color: white; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="color: white; margin: 0; font-size: 1.25rem;">İş Başvuru Formu</h3>
+                    <span style="background-color: var(--primary); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">Hızlı Başvuru</span>
+                </div>
+                
+                <div class="career-tabs">
+                    <button class="tab-btn active" onclick="openTab(event, 'tab-detayli')">Detaylı Başvuru Formu</button>
+                    <button class="tab-btn" onclick="openTab(event, 'tab-hizli')">Hızlı CV Gönder</button>
+                </div>
+
+                <div id="tab-detayli" class="tab-content active">
+                    <form id="careerForm" style="padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+                    <!-- Step 1: Personal Info -->
+                    <div>
+                        <div class="form-section-title">
+                            <div class="form-section-num">1</div>
+                            <h3 style="margin: 0; font-size: 1.1rem; text-transform: uppercase; font-weight: 700;">Kişisel Bilgiler</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">T.C. Kimlik No</label>
+                                <input type="text" placeholder="00000000000" required class="form-input-text" maxlength="11" pattern="\d{11}">
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Adı ve Soyadı</label>
+                                <input type="text" placeholder="Ad Soyad" required class="form-input-text">
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Doğum Tarihi</label>
+                                <input type="date" required class="form-input-text">
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">GSM No</label>
+                                <input type="tel" placeholder="05XX XXX XX XX" required class="form-input-text">
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">E-Posta</label>
+                                <input type="email" placeholder="ornek@mail.com" required class="form-input-text">
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Medeni Hali</label>
+                                <select class="form-input-text" style="background-color: white;">
+                                    <option value="">Seçiniz</option>
+                                    <option value="Evli">Evli</option>
+                                    <option value="Bekar">Bekar</option>
+                                    <option value="Bosandi">Boşanmış</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Profil Fotoğrafı</label>
+                                <input type="file" accept="image/*" class="form-input-text" style="background-color: white; padding: 9px 16px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Educational Status -->
+                    <div>
+                        <div class="form-section-title">
+                            <div class="form-section-num">2</div>
+                            <h3 style="margin: 0; font-size: 1.1rem; text-transform: uppercase; font-weight: 700;">Eğitim ve Uzmanlık</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Eğitim Düzeyi</label>
+                                <select class="form-input-text" style="background-color: white;" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="Lise">Lise</option>
+                                    <option value="Myo">Meslek Yüksek Okulu</option>
+                                    <option value="Lisans">Üniversite (Lisans)</option>
+                                    <option value="Yuksek">Yüksek Lisans</option>
+                                    <option value="Doktora">Doktora</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Bölüm / Branş</label>
+                                <input type="text" placeholder="Mezuniyet Bölümü" class="form-input-text" required>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Başvurulan Pozisyon</label>
+                                <select id="target-position" class="form-input-text" style="background-color: white; font-weight: 700; color: var(--primary);" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="Doktor">Doktor</option>
+                                    <option value="Hemşire">Hemşire</option>
+                                    <option value="Ebe">Ebe</option>
+                                    <option value="Tıbbi Sekreter">Tıbbi Sekreter</option>
+                                    <option value="Teknik Servis">Teknik Servis</option>
+                                    <option value="ATT / Sağlık Memuru">ATT / Sağlık Memuru</option>
+                                    <option value="Temizlik Personeli">Temizlik Personeli</option>
+                                    <option value="Güvenlik">Güvenlik</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Experience & Health -->
+                    <div>
+                        <div class="form-section-title">
+                            <div class="form-section-num">3</div>
+                            <h3 style="margin: 0; font-size: 1.1rem; text-transform: uppercase; font-weight: 700;">Sağlık ve Deneyim</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Kan Grubu</label>
+                                <select class="form-input-text" style="background-color: white;" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="A+">A Rh +</option>
+                                    <option value="A-">A Rh -</option>
+                                    <option value="B+">B Rh +</option>
+                                    <option value="B-">B Rh -</option>
+                                    <option value="AB+">AB Rh +</option>
+                                    <option value="AB-">AB Rh -</option>
+                                    <option value="0+">0 Rh +</option>
+                                    <option value="0-">0 Rh -</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Sigara Kullanımı</label>
+                                <div class="radio-box">
+                                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;"><input type="radio" name="smoke" value="Evet" required> Evet</label>
+                                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;"><input type="radio" name="smoke" value="Hayır"> Hayır</label>
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Gece Mesaisi Uygunluğu</label>
+                                <div class="radio-box">
+                                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;"><input type="radio" name="night" value="Uygun" required> Gece nöbetinde çalışabilirim</label>
+                                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;"><input type="radio" name="night" value="Uygun Değil"> Gece nöbetinde çalışamam</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Deneyim ve Kurslar -->
+                    <div>
+                        <div class="form-section-title">
+                            <div class="form-section-num">4</div>
+                            <h3 style="margin: 0; font-size: 1.1rem; text-transform: uppercase; font-weight: 700;">Deneyim ve Kurslar</h3>
+                        </div>
+                        
+                        <h4 style="font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">İş Deneyimleri</h4>
+                        <div id="experience-container">
+                            <div class="dynamic-row">
+                                <div class="form-grid">
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">İş Yerinin Adı</label>
+                                        <input type="text" name="exp_company[]" class="form-input-text">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">İş Yerindeki Göreviniz</label>
+                                        <input type="text" name="exp_role[]" class="form-input-text">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Çalışma Süreniz</label>
+                                        <input type="text" name="exp_duration[]" class="form-input-text">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">İş Yeri Hangi Şehirde</label>
+                                        <input type="text" name="exp_city[]" class="form-input-text">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Ayrılma Sebebiniz</label>
+                                        <input type="text" name="exp_reason[]" class="form-input-text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addExperience()"><i data-lucide="plus-circle" style="width: 16px; height: 16px;"></i> İş Deneyimi Ekle</button>
+
+                        <h4 style="font-size: 1rem; color: var(--text-dark); margin-bottom: 12px; margin-top: 16px;">Kurs ve Sertifikalar</h4>
+                        <div id="course-container">
+                            <div class="dynamic-row">
+                                <div class="form-grid">
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Kurs Adı / Konusu</label>
+                                        <input type="text" name="course_name[]" class="form-input-text">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Eğitim Kurumu</label>
+                                        <input type="text" name="course_institution[]" class="form-input-text">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Kurs Süresi / Tarihi</label>
+                                        <input type="text" name="course_duration[]" class="form-input-text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addCourse()"><i data-lucide="plus-circle" style="width: 16px; height: 16px;"></i> Kurs Ekle</button>
+                    </div>
+
+                    <!-- Step 5: KVKK & Submit -->
+                    <div style="background-color: var(--bg-main); padding: 24px; border-radius: var(--radius-md); display: flex; flex-direction: column; gap: 20px; margin-top: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <input type="checkbox" required style="margin-top: 3px; cursor: pointer;">
+                            <label style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                                İş İlişkisi Kapsamında Kişisel Verilere İlişkin <strong>Beyan Ve Rıza Onay Formu'nu</strong> okudum, anladım ve onaylıyorum. Verilerimin 6698 sayılı KVKK kapsamında işlenmesine izin veriyorum.
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="padding: 16px; font-size: 1.1rem; justify-content: center; width: 100%; font-weight: 700; box-shadow: var(--shadow-md);">Başvuruyu Tamamla</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="tab-hizli" class="tab-content">
+                <form id="quickCvForm" style="padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+                    <div>
+                        <div class="form-section-title" style="margin-top: 0;">
+                            <div class="form-section-num">1</div>
+                            <h3 style="margin: 0; font-size: 1.1rem; text-transform: uppercase; font-weight: 700;">Hızlı Özgeçmiş Gönderimi</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Adı ve Soyadı</label>
+                                <input type="text" placeholder="Ad Soyad" required class="form-input-text">
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Telefon No</label>
+                                <input type="tel" placeholder="05XX XXX XX XX" required class="form-input-text">
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">CV Yükle (PDF, DOCX)</label>
+                                <input type="file" accept=".pdf,.doc,.docx" required class="form-input-text" style="background-color: white; padding: 9px 16px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background-color: var(--bg-main); padding: 24px; border-radius: var(--radius-md); display: flex; flex-direction: column; gap: 20px; margin-top: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <input type="checkbox" required style="margin-top: 3px; cursor: pointer;">
+                            <label style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                                İş İlişkisi Kapsamında Kişisel Verilere İlişkin <strong>Beyan Ve Rıza Onay Formu'nu</strong> okudum, anladım ve onaylıyorum. Verilerimin 6698 sayılı KVKK kapsamında işlenmesine izin veriyorum.
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="padding: 16px; font-size: 1.1rem; justify-content: center; width: 100%; font-weight: 700; box-shadow: var(--shadow-md);">CV'mi Gönder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Contact -->
+    <section class="section" style="background-color: var(--secondary); color: white;">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: white; font-size: 2rem; margin-bottom: 32px;">Sorularınız mı Var?</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 720px; margin: 0 auto; text-align: left;">
+                <div style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 24px; display: flex; gap: 16px; align-items: center;">
+                    <div style="color: var(--accent);"><i data-lucide="phone" style="width: 32px; height: 32px;"></i></div>
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase;">İrtibat Telefonu</span>
+                        <p style="font-size: 1.25rem; font-weight: 700; color: white; margin-top: 4px;">0328 813 50 10</p>
+                    </div>
+                </div>
+                <div style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 24px; display: flex; gap: 16px; align-items: center;">
+                    <div style="color: var(--accent);"><i data-lucide="mail" style="width: 32px; height: 32px;"></i></div>
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase;">İK E-Posta Adresi</span>
+                        <p style="font-size: 1.25rem; font-weight: 700; color: white; margin-top: 4px;">ik@ibnisinahastanesi.com.tr</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+                </a>
+                <p>Modern tıbbın tüm imkanlarını insan odaklı yaklaşımla birleştirerek, güvenilir sağlık hizmeti sunuyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="kurumsal.html">Hakkımızda</a></li>
+                    <li><a href="kurumsal.html">Kalite Politikamız</a></li>
+                    <li><a href="is-basvurusu.html">İş Başvurusu</a></li>
+                    <li><a href="laboratuvar-sonuclari.html">Laboratuvar Sonuçları</a></li>
+                    <li><a href="radyolojik-goruntuleme.html">Radyolojik Görüntüleme</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Hızlı Bağlantılar</h4>
+                <ul>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                    <li><a href="hasta-rehberi.html">KVK Aydınlatma Metni</a></li>
+                    <li><a href="hasta-rehberi.html">Çerez Politikası</a></li>
+                    <li><a href="hasta-rehberi.html#faq">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>İletişim Bilgileri</h4>
+                <ul>
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        <span>Merkez Mah. Sağlık Sok. No:12, Osmaniye</span>
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <span>Call Center: 0328 813 50 10</span>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <span>info@ibnisinahastanesi.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 İbni Sina Hastanesi. Tüm hakları saklıdır.</p>
+            <p>Design with health in mind</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Set position in dropdown when clicking specific 'Apply' buttons
+        function setPostion(posName) {
+            const select = document.getElementById('target-position');
+            if (select) {
+                select.value = posName;
+                openTab({currentTarget: document.querySelector('.tab-btn')}, 'tab-detayli');
+            }
+        }
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
+
+        // Dynamic Fields functionality
+        function addExperience() {
+            const container = document.getElementById('experience-container');
+            const row = document.createElement('div');
+            row.className = 'dynamic-row';
+            row.innerHTML = `
+                <button type="button" class="remove-btn" onclick="this.parentElement.remove()"><i data-lucide="trash-2" style="width: 16px; height: 16px;"></i></button>
+                <div class="form-grid">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">İş Yerinin Adı</label>
+                        <input type="text" name="exp_company[]" class="form-input-text">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">İş Yerindeki Göreviniz</label>
+                        <input type="text" name="exp_role[]" class="form-input-text">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Çalışma Süreniz</label>
+                        <input type="text" name="exp_duration[]" class="form-input-text">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">İş Yeri Hangi Şehirde</label>
+                        <input type="text" name="exp_city[]" class="form-input-text">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Ayrılma Sebebiniz</label>
+                        <input type="text" name="exp_reason[]" class="form-input-text">
+                    </div>
+                </div>
+            `;
+            container.appendChild(row);
+            lucide.createIcons();
+        }
+
+        function addCourse() {
+            const container = document.getElementById('course-container');
+            const row = document.createElement('div');
+            row.className = 'dynamic-row';
+            row.innerHTML = `
+                <button type="button" class="remove-btn" onclick="this.parentElement.remove()"><i data-lucide="trash-2" style="width: 16px; height: 16px;"></i></button>
+                <div class="form-grid">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Kurs Adı / Konusu</label>
+                        <input type="text" name="course_name[]" class="form-input-text">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Eğitim Kurumu</label>
+                        <input type="text" name="course_institution[]" class="form-input-text">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                        <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Kurs Süresi / Tarihi</label>
+                        <input type="text" name="course_duration[]" class="form-input-text">
+                    </div>
+                </div>
+            `;
+            container.appendChild(row);
+            lucide.createIcons();
+        }
+
+        // Simple Form Submission Simulation
+        document.getElementById('careerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = "Lütfen bekleyin işleminiz yapılıyor...";
+            btn.disabled = true;
+            btn.style.opacity = "0.7";
+            
+            setTimeout(() => {
+                alert('Başvurunuz başarıyla alınmıştır. İnsan kaynakları departmanımız sizinle iletişime geçecektir.');
+                btn.innerText = originalText;
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                e.target.reset();
+            }, 2000);
+        });
+
+        document.getElementById('quickCvForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = "Lütfen bekleyin...";
+            btn.disabled = true;
+            btn.style.opacity = "0.7";
+            
+            setTimeout(() => {
+                alert('Özgeçmişiniz başarıyla alınmıştır. Teşekkür ederiz.');
+                btn.innerText = originalText;
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                e.target.reset();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

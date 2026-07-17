@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Bülten - İbni Sina Hastanesi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .featured-large {
+            position: relative;
+            height: 400px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .featured-large:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .featured-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .featured-large:hover img {
+            transform: scale(1.03);
+        }
+        .featured-large-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            color: white;
+        }
+        .featured-small-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .featured-small-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+        .featured-small-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .featured-small-card-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        .featured-small-card-primary h3 {
+            color: white;
+        }
+        .featured-small-card-primary p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .bulten-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .bulten-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .bulten-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        .bulten-card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .bulten-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .bulten-card-body {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 60px;
+        }
+        .page-num {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        .page-num:hover, .page-num.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        @media (max-width: 1024px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            .bulten-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .bulten-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+        <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-info">
+                    <span><i data-lucide="phone"></i> 0328 813 50 10</span>
+                    <span><i data-lucide="mail"></i> info@ibnisinahastanesi.com</span>
+                </div>
+                <div class="top-bar-socials">
+                    <a href="https://www.facebook.com/pages/Osmaniye-%C3%96zel-%C4%B0bnisina-Hastanesi/132233293653245?fref=ts" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="http://twitter.com/ibnisinahastane" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osmaniye+Ozel+Ibni+Sina+Hastanesi" target="_blank" aria-label="Google Maps"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></a>
+                    <a href="https://www.instagram.com/osmaniyeibnisinahastanesi/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: var(--primary); cursor: pointer;">TR</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">|</span>
+                    <span style="font-weight: 500; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">EN</span>
+                </div>
+                <a href="tel:03288135010" style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 style="text-align: left; border-left: 4px solid var(--primary); padding-left: 20px;">E-Bülten</h1>
+            <p style="text-align: left; padding-left: 24px;">Güncel sağlık haberleri, uzman hekim görüşleri ve sağlıklı yaşam rehberimiz.</p>
+        </div>
+    </section>
+
+    <!-- Featured News (Bento) -->
+    <section class="section" style="padding-bottom: 20px;">
+        <div class="container">
+            <div class="featured-grid">
+                <!-- Large highlighted story -->
+                <div class="featured-large" onclick="window.location.href='#'">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_bi9nBhJgByRNauuJdy3iXW4FE8fkY5HgXOBiScBBWqiisiSXKExs5iGYw1mNXK5c7OW7HhO1FwGfsaLVKKJ3rZ94mAlvoD6RbathojmYT6UiRoQYhG5xVvsw8lqNBfV8BmASQ547OtmIUVXKIcXTpTCue7EGKusKvroru-VR06RLrqiaVOh96aoCJGxY6bOQUxVpAHdpFPFosyw48gkcvWbvBNzhA731UhGVZoqXsplXkNF8gEPG" alt="Doctor explaining spinal health">
+                    <div class="featured-large-overlay">
+                        <span style="background-color: var(--primary); padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; width: fit-content; margin-bottom: 12px; text-transform: uppercase;">Kapak Konusu</span>
+                        <h2 style="font-size: 1.8rem; line-height: 1.3; margin-bottom: 8px;">10 SORU 10 CEVAPLA BEL FITIKLARI</h2>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 600px;">Bel fıtığı, omurlar arasındaki omurganın yükünü taşıyan ve bu yükü amortisör görevi görerek süspanse eden disk dediğimiz yastıkçıkların yırtılmasıyla oluşur.</p>
+                    </div>
+                </div>
+
+                <!-- Small sidebar highlights -->
+                <div class="featured-small-container">
+                    <div class="featured-small-card">
+                        <div>
+                            <div style="color: var(--primary); margin-bottom: 12px;"><i data-lucide="microscope" style="width: 28px; height: 28px;"></i></div>
+                            <h3 style="font-size: 1.15rem; margin-bottom: 8px;">AKILCI LABORATUVAR PROJESİ</h3>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Hastanemiz bünyesinde başlatılan yeni akılcı laboratuvar kullanımı projesi ile teşhis süreçlerini optimize ediyoruz.</p>
+                        </div>
+                        <a href="laboratuvar-sonuclari.html" style="color: var(--primary); font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 4px; margin-top: 16px;">
+                            <span>İncele</span> <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </a>
+                    </div>
+                    <div class="featured-small-card featured-small-card-primary">
+                        <div>
+                            <div style="color: white; margin-bottom: 12px;"><i data-lucide="video" style="width: 28px; height: 28px;"></i></div>
+                            <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: white;">Tanıtım Videomuz</h3>
+                            <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; line-height: 1.5;">İbni Sina Hastanesi modern tıbbi imkanlarını ve uzman hekim kadrosunu yakından tanıyın.</p>
+                        </div>
+                        <a href="#" class="btn" style="background-color: white; color: var(--primary); padding: 8px 16px; font-size: 0.85rem; width: fit-content; margin-top: 16px; font-weight: 700;">İzle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletters Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="bulten-grid">
+                <!-- Card 1: Ramazanda Beslenme (Links to detail) -->
+                <div class="bulten-card">
+                    <div class="bulten-card-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuACxE1VfrO0g1HigfBmGfxguR4WyKtcunQ64yxHgqBSEhOEPWBD3Dopkj7hz2eoAyrondV1cHhdEDSkqlSBgdE-3BFNd5saKk525T1B4wKT7_FD5EwCGb4LJqJ_zaaVb3pwdAbSMi9Wf6JSIhm8PhYwdVcrvZ_oduKQLv9xatnz2_ZkbP8yTUPKVBqUWAF1Cu7tC5cZdjxL5P-FPUAzCPhNokw5g2dbxt0jK50WL_OB2LcBl_d9i__E" alt="Ramazan beslenme">
+                    </div>
+                    <div class="bulten-card-body">
+                        <div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 8px;">Ramazanda Nasıl Beslenmeli?</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px;">Ramazan ayında uzun açlık süreleri nedeniyle oruç tutanların sağlıklarına daha fazla dikkat etmeleri için uzman diyetisyen önerileri.</p>
+                        </div>
+                        <a href="bulten-detay.html" class="btn btn-outline" style="justify-content: center; width: 100%;">Hemen Oku</a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Anne Sütü -->
+                <div class="bulten-card">
+                    <div class="bulten-card-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFAM1Xu_n8nrve_izA1nl3uG-HhJC0vuoZNsv0ACAw7r9FIDmH_Sw-IuxjBcTiALaxS2QfyvNi-jv60rgguQOuKdOGW47EAzGvxyNfZBaU9bMaVmMirbtjUFgEihkwF6mq9l3FIkAX7g-L5CDtQbB6RDvvNQOcVIXZJTfktt6qO--SBm6PtawEaTVZy7Q8mdhGAE-GGrTbphxOM82BWNh4RoWi0Cp9iRYZ1MTkhr5mdpBwIXPKaGjL" alt="Importance of breast milk">
+                    </div>
+                    <div class="bulten-card-body">
+                        <div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 8px;">Anne Sütünün Önemi</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px;">Bebek beslenmesinde ilk 6 ay sadece anne sütü ve 2 yaş sonrasına kadar devam eden sürecin gelişimsel faydaları.</p>
+                        </div>
+                        <a href="#" class="btn btn-outline" style="justify-content: center; width: 100%;">Devamını Oku</a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Piezo Rinoplasti -->
+                <div class="bulten-card">
+                    <div class="bulten-card-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN6WIb58hHfmfnhsutKNBIuf9eMpZTA0WheEXUCLNMr8KdPn_Y8Rcq8kC3Dbl5DviHB-9KaPoV6RkwSwWr41i-gqI6NukvRDkjv7czqJSzI1LxSUKQkJwytowoyrh9dCrXXssWahz7vD56SQk0V1rNbYZcSUj5DXXdCB1l-s87Ry-GEXoubynMHDej2DhNKVXCmuKvbJzDS2pVbGjZCBRd5OdXmBDP1kHuEV-MIv_yvWV8Ffgpv3IX" alt="Ultrasound Rhinoplasty technology">
+                    </div>
+                    <div class="bulten-card-body">
+                        <div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 8px;">Piezo Rinoplasti Nedir?</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px;">Burun estetiğinde dokulara zarar vermeyen, ultrasonik dalgalarla kemik şekillendirme sağlayan yeni nesil güvenilir yöntem.</p>
+                        </div>
+                        <a href="#" class="btn btn-outline" style="justify-content: center; width: 100%;">İncele</a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Kalp Damar Hastalıkları -->
+                <div class="bulten-card">
+                    <div class="bulten-card-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6JtNpGVG-94SeaQmCx6Lwt9lCy4P4U32ycveaGHsd5_b11w5kNIOZ92Q43dfGTHstTyLUp3rXUjyb4tMtbH--gyelmBxBgPnpDFGkt_13Qqf_QNdG6LA_P0q-Jn4fhMAd2oSoBIL4_lhgRnUaL5kEppHP05R84WASFjZAQkxXuCFWAxSEYLqRGpEPgZguRmxDJiVPPNUlQ5QlbBzTiw4c4-7_3K2_dlH8wDTV55IFVbOjxt1V2h7t" alt="Heart health food salmon walnuts">
+                    </div>
+                    <div class="bulten-card-body">
+                        <div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 8px;">Kalp Sağlığı ve Beslenme</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px;">Kalp damar sağlığını korumak için beslenme alışkanlıklarımızda yapmamız gereken temel değişimler.</p>
+                        </div>
+                        <a href="#" class="btn btn-outline" style="justify-content: center; width: 100%;">Hemen Oku</a>
+                    </div>
+                </div>
+
+                <!-- Card 5: Bel Ağrısı Nedenleri -->
+                <div class="bulten-card">
+                    <div class="bulten-card-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjQ0VzHldbjJmCwg41xke09PqIf5CTfbDJkMsaOU4NupnxfE38WQasFGLltxQAg42EP8h9y_OsBgV9j_z6xcSLtbQfZU6XokNde9sinsG347oT3_2lrbG4OHILHYTbXmaba0Q0jUU9ud3vkkztFkkWm_xGPLJE8rl-NXrif8rhqgdLfxGLNfTGgjRETgOoL-eKZhO2JGJFA6Ual3EsLKFPnizObA5O0durtV3ohIUr1z-MoWmhF4CG" alt="Lower back pain diagnosis">
+                    </div>
+                    <div class="bulten-card-body">
+                        <div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 8px;">Bel Ağrısı Nedenleri Nelerdir?</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px;">Bel ağrısı çekenlerin büyük çoğunluğunda neden hemen fıtık olmayabilir. Detaylı tıbbi incelemeler ve ağrı yönetimi.</p>
+                        </div>
+                        <a href="#" class="btn btn-outline" style="justify-content: center; width: 100%;">Devamını Oku</a>
+                    </div>
+                </div>
+
+                <!-- Card 6: Uyku Lab -->
+                <div class="bulten-card" style="background-color: var(--secondary); color: white; border: none; justify-content: center; align-items: center; text-align: center; padding: 32px;">
+                    <div style="color: var(--accent); margin-bottom: 16px;"><i data-lucide="book-open" style="width: 48px; height: 48px;"></i></div>
+                    <h4 style="color: white; font-size: 1.25rem; margin-bottom: 8px;">Haftalık E-Dergimiz</h4>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; line-height: 1.5; margin-bottom: 24px;">Hastanemizin haftalık dergisinin tüm sayılarına dijital arşivimizden ulaşabilirsiniz.</p>
+                    <a href="#" class="btn" style="background-color: var(--primary); color: white; width: 100%; justify-content: center;">Arşivi Görüntüle</a>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-num"><i data-lucide="chevron-left" style="width: 16px; height: 16px; margin-top: 4px;"></i></a>
+                <a href="#" class="page-num active">1</a>
+                <a href="#" class="page-num">2</a>
+                <a href="#" class="page-num"><i data-lucide="chevron-right" style="width: 16px; height: 16px; margin-top: 4px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+                </a>
+                <p>Modern tıbbın tüm imkanlarını insan odaklı yaklaşımla birleştirerek, güvenilir sağlık hizmeti sunuyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="kurumsal.html">Hakkımızda</a></li>
+                    <li><a href="kurumsal.html">Kalite Politikamız</a></li>
+                    <li><a href="is-basvurusu.html">İş Başvurusu</a></li>
+                    <li><a href="laboratuvar-sonuclari.html">Laboratuvar Sonuçları</a></li>
+                    <li><a href="radyolojik-goruntuleme.html">Radyolojik Görüntüleme</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Hızlı Bağlantılar</h4>
+                <ul>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                    <li><a href="hasta-rehberi.html">KVK Aydınlatma Metni</a></li>
+                    <li><a href="hasta-rehberi.html">Çerez Politikası</a></li>
+                    <li><a href="hasta-rehberi.html#faq">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>İletişim Bilgileri</h4>
+                <ul>
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        <span>Merkez Mah. Sağlık Sok. No:12, Osmaniye</span>
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <span>Call Center: 0328 813 50 10</span>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <span>info@ibnisinahastanesi.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 İbni Sina Hastanesi. Tüm hakları saklıdır.</p>
+            <p>Design with health in mind</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

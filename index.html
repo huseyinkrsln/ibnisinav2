@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İbni Sina Hastanesi - Sağlığınız Güvenli Ellerde</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Quick Access Layout */
+        .quick-access {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 20;
+        }
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+        .quick-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+            text-align: center;
+            transition: var(--transition);
+            border-right: 1px solid var(--border);
+        }
+        .quick-item:last-child {
+            border-right: none;
+        }
+        .quick-item:hover {
+            background-color: var(--bg-main);
+        }
+        .quick-item svg {
+            width: 40px;
+            height: 40px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+        .quick-item:hover svg {
+            transform: scale(1.1);
+        }
+        .quick-item span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Unit Highlights */
+        .unit-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .unit-main-card {
+            grid-column: span 8;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            height: 450px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .unit-side-card {
+            grid-column: span 4;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            height: 450px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+        .unit-sub-card {
+            grid-column: span 4;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            min-height: 350px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+        .unit-sub-card-colored {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        .unit-sub-card-colored h3 {
+            color: white;
+        }
+        .unit-sub-card-colored p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .unit-full-card {
+            grid-column: span 12;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            min-height: 300px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .unit-full-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--secondary);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            .quick-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .unit-main-card {
+                grid-column: span 12;
+            }
+            .unit-side-card {
+                grid-column: span 12;
+                height: auto;
+            }
+            .unit-sub-card {
+                grid-column: span 12;
+                min-height: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .quick-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .unit-full-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+        <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-info">
+                    <span><i data-lucide="phone"></i> 0328 813 50 10</span>
+                    <span><i data-lucide="mail"></i> info@ibnisinahastanesi.com</span>
+                </div>
+                <div class="top-bar-socials">
+                    <a href="https://www.facebook.com/pages/Osmaniye-%C3%96zel-%C4%B0bnisina-Hastanesi/132233293653245?fref=ts" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="http://twitter.com/ibnisinahastane" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osmaniye+Ozel+Ibni+Sina+Hastanesi" target="_blank" aria-label="Google Maps"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></a>
+                    <a href="https://www.instagram.com/osmaniyeibnisinahastanesi/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+            </a>            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Anasayfa</a></li>
+                <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: var(--primary); cursor: pointer;">TR</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">|</span>
+                    <span style="font-weight: 500; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">EN</span>
+                </div>
+                <a href="tel:03288135010" style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="min-height: 80vh; position: relative; overflow: hidden;">
+        <!-- Glowing Medical Blobs -->
+        <div style="position: absolute; width: 350px; height: 350px; background: rgba(0, 166, 196, 0.12); filter: blur(80px); border-radius: 50%; left: 8%; top: 15%; pointer-events: none; z-index: 1;"></div>
+        <div style="position: absolute; width: 450px; height: 450px; background: rgba(15, 23, 42, 0.04); filter: blur(100px); border-radius: 50%; right: 8%; bottom: 10%; pointer-events: none; z-index: 1;"></div>
+
+        <!-- Floating Medical Elements in Background -->
+        <div style="position: absolute; left: 4%; top: 22%; opacity: 0.07; color: var(--primary); transform: rotate(-15deg); pointer-events: none; z-index: 1;">
+            <i data-lucide="microscope" style="width: 80px; height: 80px;"></i>
+        </div>
+        <div style="position: absolute; left: 12%; bottom: 12%; opacity: 0.05; color: var(--primary); transform: rotate(10deg); pointer-events: none; z-index: 1;">
+            <i data-lucide="heart-pulse" style="width: 64px; height: 64px;"></i>
+        </div>
+        <div style="position: absolute; right: 5%; top: 12%; opacity: 0.05; color: var(--primary); transform: rotate(20deg); pointer-events: none; z-index: 1;">
+            <i data-lucide="stethoscope" style="width: 96px; height: 96px;"></i>
+        </div>
+        <div style="position: absolute; right: 15%; bottom: 15%; opacity: 0.07; color: var(--primary); transform: rotate(-25deg); pointer-events: none; z-index: 1;">
+            <i data-lucide="shield-check" style="width: 72px; height: 72px;"></i>
+        </div>
+        <div style="position: absolute; left: 45%; top: 8%; opacity: 0.04; color: var(--primary); pointer-events: none; z-index: 1;">
+            <i data-lucide="dna" style="width: 120px; height: 120px; transform: rotate(45deg);"></i>
+        </div>
+
+        <div class="container hero-grid" style="position: relative; z-index: 10;">
+            <div class="hero-content">
+                <span style="font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 12px;">Güvenli Gelecek İçin</span>
+                <h1>Bizim İçin <span>Önemlisiniz</span></h1>
+                <p>Modern tıp teknolojileri ve uzman hekim kadromuzla, sağlığınızı en üst düzeyde korumak için buradayız. Hastanemiz, hasta odaklı yaklaşımıyla şifa dağıtmaya devam ediyor.</p>
+                <div class="hero-buttons">
+                    <a href="kurumsal.html" class="btn btn-primary">
+                        <i data-lucide="info"></i>
+                        <span>Hakkımızda Daha Fazla</span>
+                    </a>
+                    <a href="departmanlar.html" class="btn btn-secondary">
+                        <i data-lucide="activity"></i>
+                        <span>Hizmetlerimiz</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Uzman Branş</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Acil Servis</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img alt="İbni Sina Hastanesi" src="ibni_sina_banner.png" style="width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+        <div class="container">
+            <div class="quick-grid">
+                <a href="kurumsal.html" class="quick-item">
+                    <i data-lucide="building-2"></i>
+                    <span>Kurumsal</span>
+                </a>
+                <a href="laboratuvar-sonuclari.html" class="quick-item">
+                    <i data-lucide="microscope"></i>
+                    <span>Laboratuvar Sonuçları</span>
+                </a>
+                <a href="online-islemler.html" class="quick-item">
+                    <i data-lucide="smartphone"></i>
+                    <span>Online İşlemler</span>
+                </a>
+                <a href="radyolojik-goruntuleme.html" class="quick-item">
+                    <i data-lucide="binary"></i>
+                    <span>Radyolojik Görüntüleme</span>
+                </a>
+                <a href="is-basvurusu.html" class="quick-item">
+                    <i data-lucide="briefcase"></i>
+                    <span>İş Başvurusu</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medical Units Highlights -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Öne Çıkan Birimlerimiz</h2>
+                <p>En son teknolojiler ve uzman kadromuzla yanınızdayız. Modern tanı ve tedavi yöntemlerini dünya standartlarında sunuyoruz.</p>
+            </div>
+            
+            <div class="unit-grid">
+                <!-- Main Card: Laboratuvar -->
+                <div class="unit-main-card">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%); z-index: 10;"></div>
+                    <img alt="Gelişmiş Tanı Merkezi" style="width: 100%; height: 100%; object-fit: cover;" src="ibni_sina_doctors.png">
+                    <div style="position: absolute; bottom: 0; left: 0; z-index: 20; padding: 40px; color: white;">
+                        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap;">
+                            <span style="font-size: 0.75rem; font-weight: 700; background-color: var(--accent); padding: 4px 8px; border-radius: var(--radius-sm);">LABORATUVAR</span>
+                        </div>
+                        <h3 style="color: white; font-size: 1.75rem; margin-bottom: 8px;">Gelişmiş Tanı Merkezi</h3>
+                        <p style="color: rgba(255,255,255,0.85); margin-bottom: 24px; max-width: 480px;">24 saat kesintisiz hizmet veren laboratuvarımızda en doğru sonuçlar için çalışıyoruz.</p>
+                        <a href="departmanlar.html#radyoloji" style="color: white; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+                            <span>Detaylı Bilgi</span> <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Side Card: Radyoloji -->
+                <div class="unit-side-card" style="position: relative; overflow: hidden; padding: 0;">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%); z-index: 10;"></div>
+                    <img alt="Radyoloji Ünitesi" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkG69MsDY-gdUHOGvWUFqUOd3tFQiWu2SM5xCIwQa8UJgKOqbILCehmhDDikNaHq-jmh4plb6ytMEOJq3RP5LBY9FsHIFAmL97vhaK-NVO-k0Idyl8y41MLSoRZR3HnOkeE0NzLNlYI0ZE2jNY5MwgWvnkpdAUdBD2EJLsRVCl-fcLZb-HK1wJb6enZjgAW3xiEzE6UKrNac9TK-B2mPTz2_K_nbY0lxmsIsMrp0jYv5-NlVD9SJsF">
+                    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; z-index: 20; padding: 40px; color: white;">
+                        <div>
+                            <div style="width: 56px; height: 56px; background-color: rgba(255,255,255,0.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 24px;">
+                                <i data-lucide="scan" style="width: 28px; height: 28px;"></i>
+                            </div>
+                            <h3 style="color: white; font-size: 1.5rem;">Radyoloji</h3>
+                            <p style="color: rgba(255,255,255,0.85); margin-top: 12px; font-size: 0.95rem; line-height: 1.5;">MR, BT ve Ultrasonografi hizmetlerimizle dijital görüntüleme çözümleri sunuyoruz.</p>
+                        </div>
+                        <a href="departmanlar.html#radyoloji" style="color: white; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+                            <span>Birim Sayfası</span> <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Row 2: Acil Servis -->
+                <div class="unit-sub-card" style="position: relative; overflow: hidden; padding: 0;">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%); z-index: 10;"></div>
+                    <img alt="Acil Servis" style="width: 100%; height: 100%; object-fit: cover;" src="https://www.ibnisinahastanesi.com.tr/resim/icerik/acil-bolum.jpg">
+                    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; z-index: 20; padding: 40px; color: white;">
+                        <div>
+                            <div style="width: 56px; height: 56px; background-color: rgba(255,255,255,0.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 24px;">
+                                <i data-lucide="ambulance" style="width: 28px; height: 28px;"></i>
+                            </div>
+                            <h3 style="color: white; font-size: 1.5rem;">Acil Servis</h3>
+                            <p style="color: rgba(255,255,255,0.85); margin-top: 12px; font-size: 0.95rem; line-height: 1.5;">Tam donanımlı acil servisimizle 7 gün 24 saat kesintisiz sağlık hizmeti sunuyoruz.</p>
+                        </div>
+                        <a href="iletisim.html" class="btn" style="background-color: white; color: var(--primary); text-align: center; justify-content: center; width: 100%;">İletişime Geç</a>
+                    </div>
+                </div>
+
+                <!-- Nöbetçi Eczaneler -->
+                <div class="unit-sub-card" style="position: relative; overflow: hidden; padding: 0;">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%); z-index: 10;"></div>
+                    <img alt="Nöbetçi Eczaneler" style="width: 100%; height: 100%; object-fit: cover;" src="ibni_sina_pharmacy.png">
+                    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; z-index: 20; padding: 40px; color: white;">
+                        <div>
+                            <div style="width: 56px; height: 56px; background-color: rgba(255,255,255,0.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 24px;">
+                                <i data-lucide="pill" style="width: 28px; height: 28px;"></i>
+                            </div>
+                            <h3 style="color: white; font-size: 1.5rem;">Nöbetçi Eczaneler</h3>
+                            <p style="color: rgba(255,255,255,0.85); margin-top: 12px; font-size: 0.95rem; line-height: 1.5;">Bölgemizdeki güncel nöbetçi eczane listesine buradan ulaşabilirsiniz.</p>
+                        </div>
+                        <a href="nobetci-eczaneler.html" class="btn" style="background-color: white; color: var(--primary); text-align: center; justify-content: center; width: 100%;">Listeyi Gör</a>
+                    </div>
+                </div>
+
+                <!-- E-Bülten -->
+                <div class="unit-sub-card" style="position: relative; overflow: hidden; padding: 0;">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%); z-index: 10;"></div>
+                    <img alt="E-Bülten" style="width: 100%; height: 100%; object-fit: cover;" src="ibni_sina_newsletter.png">
+                    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; z-index: 20; padding: 40px; color: white;">
+                        <div>
+                            <div style="width: 56px; height: 56px; background-color: rgba(255,255,255,0.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 24px;">
+                                <i data-lucide="newspaper" style="width: 28px; height: 28px;"></i>
+                            </div>
+                            <h3 style="color: white; font-size: 1.5rem;">E-Bülten</h3>
+                            <p style="color: rgba(255,255,255,0.85); margin-top: 12px; font-size: 0.95rem; line-height: 1.5;">Hastanemizden güncel sağlık haberleri ve makalelere göz atın.</p>
+                        </div>
+                        <a href="e-bulten.html" class="btn" style="background-color: white; color: var(--primary); text-align: center; justify-content: center; width: 100%;">Bültenleri İncele</a>
+                    </div>
+                </div>
+
+                <!-- Full Width Row: Guide -->
+                <div class="unit-full-card">
+                    <div class="unit-full-grid">
+                        <div style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+                            <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; display: block;">REHBER</span>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Ziyaretçi ve Hasta Rehberi</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 24px;">Hastanemize yapacağınız ziyaretler ve yatış süreçleri hakkında merak ettiğiniz tüm bilgiler burada.</p>
+                            <a href="hasta-rehberi.html" style="color: var(--primary); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; width: fit-content;">
+                                <span>Rehberi İncele</span> <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                            </a>
+                        </div>
+                        <div style="position: relative; height: 100%; min-height: 200px;">
+                            <img alt="Visitor Guide" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida/AP1WRLuYkThG9IjWf_PRKkSRiqUI7O291OOnB3MS_985C3IH3Ei5yQ57MyqBeaxtjnGrCk8zAmZ1GPAez5uk1-53N7rZLZr3irqCk5ifWfESykJgj8iMprc4dqGgVADXfrCco-8q0pwmC3bSzToehCi8ZVq5gNY4Ey2dtXQpXcc0ySirkRrlOoYQ2e4HV9RTDXuIN3191mqulsVVlu_XdxpA4n79ShvNUGJcqhg80TYzRjxoSISxPInFwytMT1Y">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Doctors -->
+    <section class="section" style="background-color: #ffffff;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px;">
+                <div style="max-w: 600px;">
+                    <h2>Uzman Hekimlerimiz</h2>
+                    <p style="color: var(--text-muted); margin-top: 8px;">Alanında uzman, deneyimli kadromuzla her zaman en iyi sağlık hizmetini sunmak için çalışıyoruz.</p>
+                </div>
+                <a href="doktorlar.html" style="color: var(--primary); font-weight: 700; border-bottom: 2px solid var(--primary); padding-bottom: 4px; display: inline-flex; align-items: center; gap: 6px;">
+                    <span>Tüm Doktorları Gör</span> <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                </a>
+            </div>
+            
+            <div class="doctors-grid">
+                <!-- Dr 1 -->
+                <div class="card" style="border-radius: var(--radius-lg); overflow: hidden;">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Prof. Dr. Ahmet Yılmaz" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdc6_6XaKF5Gtv9j2CVrZolmMNKCMbpbbPKqhzQVoKGUy_vUlX7bolxqEMPS1u4w3T3ZgNDjgyhg3YvoxLD2rc7Qv7vdjUwrfRx9AbzXT8yJ8NgC3Lfk8IDYCDV0WXXAKx_LFSxFm3sx8p4fD92RqBCcYpgUN48uNg8CSZwoZiYihsgI-5k_l80b5sg8Z3lWqk6wSZhcvPKHg95IBJ_TiTlLlKM96LBdbDLlWgRNVBBCzHcYk3i6pn">
+                    </div>
+                    <div class="card-body" style="text-align: center; padding: 24px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Prof. Dr. Ahmet Yılmaz</h3>
+                        <p style="color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">KARDİYOLOJİ UZMANI</p>
+                        <a href="doktor-detay.html?doc=ahmet-yilmaz" class="btn btn-outline" style="width: 100%; justify-content: center;">Profil Görüntüle</a>
+                    </div>
+                </div>
+                <!-- Dr 2 -->
+                <div class="card" style="border-radius: var(--radius-lg); overflow: hidden;">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Doç. Dr. Ayşe Kaya" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpRya8_gR1INeKh8mWD90SQWFuDB-tfhrXZemwmmFgGkdna_sKWGA7PHjii_2XLGf68743_AFxb9luaDknySSvZrByPAjG0kVtpMfyhxGxhCgHiysd4zToevT5SYhqHWgIPHjXHzFBwnkp52ChSEdO_sJKmfP-PQLM4vMvPJzP_vuXtdUloJLBt3PCtqEiuEnbCsc8aLano5Eh1ubwSC6QNraamTgEq4H_OsEQrckuHOaX5BIH0g4o">
+                    </div>
+                    <div class="card-body" style="text-align: center; padding: 24px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Doç. Dr. Ayşe Kaya</h3>
+                        <p style="color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">GÖZ HASTALIKLARI UZMANI</p>
+                        <a href="doktor-detay.html?doc=ayse-kaya" class="btn btn-outline" style="width: 100%; justify-content: center;">Profil Görüntüle</a>
+                    </div>
+                </div>
+                <!-- Dr 3 -->
+                <div class="card" style="border-radius: var(--radius-lg); overflow: hidden;">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Op. Dr. Mehmet Demir" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyi6n-CGUS8iKkkn2w7cjTbnGQjRrIFQfytAD4kl0Dqnon1JryEGIsYh1gUz4HABi9pRr7vOu88JmqecvOB4J1A37pBq7Ir6UA9_dgmLiWP5J6MYU5agRk5-qJqFWKyYUId1mf7dDWI_kkG5cmLc3v72Z56OyZrBdrNJOqljs5xCL5AHLsYYK2F8FbcFRWlUx1pcSt9CvMhxqBgRuaphH-qZb4rkGVpBiImTb1ZLy8wK50SVrm1CJG">
+                    </div>
+                    <div class="card-body" style="text-align: center; padding: 24px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Op. Dr. Mehmet Demir</h3>
+                        <p style="color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">GENEL CERRAHİ UZMANI</p>
+                        <a href="doktor-detay.html?doc=mehmet-karasu" class="btn btn-outline" style="width: 100%; justify-content: center;">Profil Görüntüle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Solutions CTA -->
+    <section class="container" style="margin-top: 40px;">
+        <div class="cta-section">
+            <h2 style="color: white; font-size: 2rem; margin-bottom: 12px;">Sağlığınız İçin Modern Çözümler</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 32px; max-width: 600px;">Sorularınız için bize ulaşabilir veya bilgi almak için bir mesaj gönderebilirsiniz. Yanınızdayız.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a class="btn btn-primary" style="background-color: var(--accent); color: white; padding: 14px 28px;" href="tel:03288135010">
+                    <i data-lucide="phone"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <a href="iletisim.html" class="btn" style="background-color: white; color: var(--secondary); padding: 14px 28px;">
+                    <i data-lucide="mail"></i>
+                    <span>Bize Mesaj Gönderin</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i data-lucide="map-pin" style="width: 24px; height: 24px; color: var(--primary);"></i>
+                    <span>İbni Sina</span>
+                </a>
+                <p>Modern tıbbın tüm imkanlarını insan odaklı yaklaşımla birleştirerek, güvenilir sağlık hizmeti sunuyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="hasta-rehberi.html">Hakkımızda</a></li>
+                    <li><a href="hasta-rehberi.html">Kalite Politikamız</a></li>
+                    <li><a href="iletisim.html">İş Başvurusu</a></li>
+                    <li><a href="iletisim.html">Laboratuvar Sonuçları</a></li>
+                    <li><a href="iletisim.html">Radyolojik Görüntüleme</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Hızlı Bağlantılar</h4>
+                <ul>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                    <li><a href="hasta-rehberi.html">KVK Aydınlatma Metni</a></li>
+                    <li><a href="hasta-rehberi.html">Çerez Politikası</a></li>
+                    <li><a href="hasta-rehberi.html#faq">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>İletişim Bilgileri</h4>
+                <ul>
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        <span>Merkez Mah. Sağlık Sok. No:12, Osmaniye</span>
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <span>Call Center: 0328 813 50 10</span>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <span>info@ibnisinahastanesi.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 İbni Sina Hastanesi. Tüm hakları saklıdır.</p>
+            <p>Design with health in mind</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

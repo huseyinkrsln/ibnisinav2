@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tıbbi Birimlerimiz - İbni Sina Hastanesi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .filter-btn {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+        <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-info">
+                    <span><i data-lucide="phone"></i> 0328 813 50 10</span>
+                    <span><i data-lucide="mail"></i> info@ibnisinahastanesi.com</span>
+                </div>
+                <div class="top-bar-socials">
+                    <a href="https://www.facebook.com/pages/Osmaniye-%C3%96zel-%C4%B0bnisina-Hastanesi/132233293653245?fref=ts" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="http://twitter.com/ibnisinahastane" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osmaniye+Ozel+Ibni+Sina+Hastanesi" target="_blank" aria-label="Google Maps"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></a>
+                    <a href="https://www.instagram.com/osmaniyeibnisinahastanesi/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="departmanlar.html" class="active">Tıbbi Birimler</a></li>
+                <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: var(--primary); cursor: pointer;">TR</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">|</span>
+                    <span style="font-weight: 500; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">EN</span>
+                </div>
+                <a href="tel:03288135010" style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Tıbbi Birimlerimiz</h1>
+            <p>Uzman branşlarımız, ileri teknolojik altyapımız ve bilimsel yöntemlerle sunduğumuz sağlık departmanlarını inceleyin.</p>
+        </div>
+    </section>
+
+    <!-- Filter & Search Section -->
+    <section class="container" style="margin-top: 40px; margin-bottom: 20px;">
+        <div class="filter-bar">
+            <div class="filter-inputs">
+                <input type="text" id="deptSearch" placeholder="Birim adı veya hastalık arayın..." style="flex: 1; min-width: 250px; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--border); outline: none;">
+                <button class="filter-btn active" data-filter="all">Tümü</button>
+                <button class="filter-btn" data-filter="dahili">Dahili Birimler</button>
+                <button class="filter-btn" data-filter="cerrahi">Cerrahi Birimler</button>
+                <button class="filter-btn" data-filter="teshis">Teşhis & Tanı</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 20px;">
+        <div class="container">
+            <div class="departments-grid" id="departmentsContainer">
+                
+                <!-- Kardiyoloji -->
+                <div class="card dept-card" data-category="dahili" data-tags="kalp damar tansiyon anjiyo kardiyoloji" style="overflow: hidden;">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6JtNpGVG-94SeaQmCx6Lwt9lCy4P4U32ycveaGHsd5_b11w5kNIOZ92Q43dfGTHstTyLUp3rXUjyb4tMtbH--gyelmBxBgPnpDFGkt_13Qqf_QNdG6LA_P0q-Jn4fhMAd2oSoBIL4_lhgRnUaL5kEppHP05R84WASFjZAQkxXuCFWAxSEYLqRGpEPgZguRmxDJiVPPNUlQ5QlbBzTiw4c4-7_3K2_dlH8wDTV55IFVbOjxt1V2h7t'); background-size: cover; background-position: center; height: 160px;">
+                    </div>
+                    <div class="card-body">
+                        <h3>Kardiyoloji</h3>
+                        <p>Kalp yetersizliği, koroner damar tıkanıklıkları, ritim bozuklukları ve hipertansiyon tanı ve tedavileri modern ekokardiyografi laboratuvarlarımızda sunulmaktadır.</p>
+                        <a href="birim-detay.html?dept=kardiyoloji" class="btn btn-primary" style="width: 100%; justify-content: center;">Detayları İncele</a>
+                    </div>
+                </div>
+
+                <!-- Çocuk Sağlığı ve Hastalıkları -->
+                <div class="card dept-card" data-category="dahili" data-tags="çocuk pediatri bebek gelişim aşı ateş grip öksürük" style="overflow: hidden;">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhpVUX73z67CafGvIaCNrhDUY-8uP2qYLEqjeBUFNpDL387Ov8NrhZlEFJMayY3cFDONWacE92Fg0DXsJrhAbbUGwXz6Jtxp5Kfod2e9RjB9XXObCvW-_UnjQaS0glFcsds6lMn8L8YwnXYbWmvgNGsUrxxSc0TC8qEPv59yr8htrC0VWxUmMaQLG_gSGyCWuvxvJ87wLj0MwUnB1O_eNjYhHbgamy0etkEF293iOLh_XNDtB5hjtH'); background-size: cover; background-position: center; height: 160px;">
+                    </div>
+                    <div class="card-body">
+                        <h3>Çocuk Sağlığı ve Hastalıkları</h3>
+                        <p>0-18 yaş grubundaki çocukların rutin büyüme gelişme takibi, beslenme rehberliği, aşı takipleri ve çocukluk çağı hastalıklarının tedavisi uzman hekimlerce yapılır.</p>
+                        <a href="birim-detay.html?dept=pediatri" class="btn btn-primary" style="width: 100%; justify-content: center;">Detayları İncele</a>
+                    </div>
+                </div>
+
+                <!-- Nöroloji -->
+                <div class="card dept-card" data-category="dahili" data-tags="beyin omurilik parkinson alzheimer felç felc migren baş ağrısı unutan" style="overflow: hidden;">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYq3VGXeEoB9H9DtHQqWRA2JIocJIfvWggP9SMFUQhXt1VelOwAVXQ0QtrkKmKPrXMFjLGei4y16ax26dvXSRDIbQAQ_HPDV3cTmg9ZZB0i0WIfz4ibulK5B7166W4HS2lP91Mojc_t5qkEe91YJaTWjrX0B88V2GvTWYNyxCDHKFV3R32BSHIrGVj1Co9ehhtmxOz2UTQfyD-Fm4IUTO74GE8rlfnrgzxp2aAVKQcZ4NmWpdVSX_9'); background-size: cover; background-position: center; height: 160px;">
+                    </div>
+                    <div class="card-body">
+                        <h3>Nöroloji</h3>
+                        <p>Migren başta olmak üzere baş ağrıları, Parkinson, Alzheimer, inme, epilepsi ve kas-sinir hastalıkları ileri tıbbi cihazlar eşliğinde teşhis ve tedavi edilmektedir.</p>
+                        <a href="birim-detay.html?dept=noroloji" class="btn btn-primary" style="width: 100%; justify-content: center;">Detayları İncele</a>
+                    </div>
+                </div>
+
+                <!-- Ortopedi ve Travmatoloji -->
+                <div class="card dept-card" data-category="cerrahi" data-tags="kemik eklem kırık çıkık alçı diz kalça ortopedi ameliyat" style="overflow: hidden;">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfvF_qw65yGiF6QGJLN0-9I64YS88cd6_n_eFlpu2z2uHhCplmLfKuQO2e45ktu3W7-FYrXc266rwk6XTZkUFBYjm2cYSo3iBrxSwEgwat7LZNzlxbiPIDdeAg_yW8-7Pob-8Uq_7YSj9KWTKv6z2l7Ull_sAgmi4VObZpIBN4IlK9tC4imnV_Mon3o7kOemCI3zzLdPGTPM9R3Pzu-TjIEPbpweUPoKjyEHyD9ZKNH7nZ1T6uK1_m'); background-size: cover; background-position: center; height: 160px;">
+                    </div>
+                    <div class="card-body">
+                        <h3>Ortopedi ve Travmatoloji</h3>
+                        <p>Eklem kireçlenmeleri, diz-kalça protez ameliyatları, spor yaralanmaları, bağ kopmaları ve travmatik kırık-çıkık ameliyatları başarıyla gerçekleştirilmektedir.</p>
+                        <a href="birim-detay.html?dept=ortopedi" class="btn btn-primary" style="width: 100%; justify-content: center;">Detayları İncele</a>
+                    </div>
+                </div>
+
+                <!-- Dermatoloji -->
+                <div class="card dept-card" data-category="dahili" data-tags="cildiye deri cilt sivilce akne egzama kaşıntı ben leke saç dökülmesi" style="overflow: hidden;">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvCvuqCee1lHCZXXdp0HGkGirgyrAfZcycZP-drsUIMcMJDs7nEEHZhEuJwV6mEMvvcrnTsCxGMT31oCiesJXIdSBNUDNxhnZmIa28tsAwutnAvw5lhNr4gjDNlMpQRnhmcXXATtL-l3zX7R3ga1DsUR2D89Mi-XecOlrVdaByG559WB6k9u5V3393XOh6z11RD0TliI49A1D-JhXVbk5WKmAU524ZddQMhNTmuaBrpRH6RewtOyCcX8G0'); background-size: cover; background-position: center; height: 160px;">
+                    </div>
+                    <div class="card-body">
+                        <h3>Dermatoloji (Cildiye)</h3>
+                        <p>Egzama, sedef, akne tedavileri, bilgisayarlı dermatoskopi ile ben takipleri, saç dökülmesi tedavileri ve estetik-kozmetik dermatolojik uygulamalar sunulmaktadır.</p>
+                        <a href="birim-detay.html?dept=acil" class="btn btn-primary" style="width: 100%; justify-content: center;">Detayları İncele</a>
+                    </div>
+                </div>
+
+                <!-- Genel Cerrahi -->
+                <div class="card dept-card" data-category="cerrahi" data-tags="ameliyat fıtık apandisit safra kesesi kanser laparoskopi cerrahi" style="overflow: hidden;">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo9XltQGswY6J78Acgvh-McxTBlQk1srRy-eHUZc3gCWVML9CCYLguBxRk9xf80odx8nLQNgf3Grdc-OvDRm2OwoW6xuABCWdGiKBMYm-3D3Tb9ehnOFqlCh73Mrdww_qmh8EHgxPU_3qh8VjX4_PQzZG_tkw86NkJNmI_CmisJe4N11fNR0OOw2AI6dcxt51UDs0tCm9V9Rf0i_bgDeJqiXQT9QQs0SACd_lonxJxdy26XLA-hFEo'); background-size: cover; background-position: center; height: 160px;">
+                    </div>
+                    <div class="card-body">
+                        <h3>Genel Cerrahi</h3>
+                        <p>Fıtıklar, safra kesesi hastalıkları, mide ve bağırsak cerrahisi, laparoskopik kapalı yöntemlerle ve konforlu ameliyat sonrası süreçlerle gerçekleştirilir.</p>
+                        <a href="birim-detay.html?dept=acil" class="btn btn-primary" style="width: 100%; justify-content: center;">Detayları İncele</a>
+                    </div>
+                </div>
+
+                <!-- Göz Hastalıkları -->
+                <div class="card dept-card" data-category="cerrahi" data-tags="göz goz katarakt gözlük lazer miyop hipermetrop muayene" style="overflow: hidden;">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBhYibI1s6c5aWY8yd-saFwZo34pe9bBd_xO2jQ5CzjN-odDa8ixp8ujfNoHAwueEtm1vWWwdRnBmSeEG91vQyIhkvuLAlqGRzZS6dd4U08OCDfyvl9Gp2iido0M_UnELu0IsnKqhI4FTLmjIvhHyDffJN6_exKPbe2XSq3EwisMALBvw5qyfm30l1ChHvLatGqfeo_wLkYeI88R059yFy1CJKAS3XLf3J703IgyDGTK4IqNDffvnkD'); background-size: cover; background-position: center; height: 160px;">
+                    </div>
+                    <div class="card-body">
+                        <h3>Göz Hastalıkları</h3>
+                        <p>Katarakt ameliyatları (akıllı mercek), lazer cerrahisi, glokom (göz tansiyonu) takibi ve rutin göz ölçümleri son jenerasyon cihazlarla yapılmaktadır.</p>
+                        <a href="birim-detay.html?dept=acil" class="btn btn-primary" style="width: 100%; justify-content: center;">Detayları İncele</a>
+                    </div>
+                </div>
+
+                <!-- Radyoloji -->
+                <div class="card dept-card" data-category="teshis" data-tags="röntgen mr ultrason tomografi röntgen rontgen röntgen radyoloji" style="overflow: hidden;">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDkG69MsDY-gdUHOGvWUFqUOd3tFQiWu2SM5xCIwQa8UJgKOqbILCehmhDDikNaHq-jmh4plb6ytMEOJq3RP5LBY9FsHIFAmL97vhaK-NVO-k0Idyl8y41MLSoRZR3HnOkeE0NzLNlYI0ZE2jNY5MwgWvnkpdAUdBD2EJLsRVCl-fcLZb-HK1wJb6enZjgAW3xiEzE6UKrNac9TK-B2mPTz2_K_nbY0lxmsIsMrp0jYv5-NlVD9SJsF'); background-size: cover; background-position: center; height: 160px;">
+                    </div>
+                    <div class="card-body">
+                        <h3>Radyoloji</h3>
+                        <p>Yüksek çözünürlüklü MR (1.5 Tesla), bilgisayarlı tomografi, ultrasonografi, renkli doppler ve dijital röntgen tetkikleri uzman hekimlerimizce raporlanır.</p>
+                        <a href="birim-detay.html?dept=acil" class="btn btn-primary" style="width: 100%; justify-content: center;">Detayları İncele</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="section" style="background-color: var(--primary); color: white; text-align: center;">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="color: white; font-size: 2.25rem; margin-bottom: 16px;">Aradığınız Bölümü Bulamadınız mı?</h2>
+            <p style="color: #ccfbf1; font-size: 1.1rem; margin-bottom: 32px;">Hekim arama sayfamızdan aradığınız uzmanlığa göre doktor seçimi yapabilir veya çağrı merkezimizi arayarak destek alabilirsiniz.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="doktorlar.html" class="btn btn-secondary">
+                    <i data-lucide="users"></i>
+                    <span>Hekim Kadromuzu İnceleyin</span>
+                </a>
+                <a href="tel:03288135010" class="btn btn-outline" style="border-color: white; color: white;">
+                    <i data-lucide="phone"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i data-lucide="map-pin" style="width: 24px; height: 24px; color: var(--primary);"></i>
+                    <span>İbni Sina</span>
+                </a>
+                <p>1998 yılından bu yana ileri tıp teknolojisini şefkatli bakım anlayışıyla birleştirerek şifa dağıtıyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Hızlı Erişim</h4>
+                <ul>
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                    <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                    <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                    <li><a href="iletisim.html">İletişim & Nöbetçiler</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Bölümlerimiz</h4>
+                <ul>
+                    <li><a href="departmanlar.html#kardiyoloji">Kardiyoloji</a></li>
+                    <li><a href="departmanlar.html#pediatri">Çocuk Sağlığı</a></li>
+                    <li><a href="departmanlar.html#noroloji">Nöroloji</a></li>
+                    <li><a href="departmanlar.html#ortopedi">Ortopedi</a></li>
+                    <li><a href="departmanlar.html#dermatoloji">Dermatoloji</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Bize Ulaşın</h4>
+                <ul>
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        <span>Atatürk Mah. İbni Sina Cad. No:12, Çankaya, Ankara</span>
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <span>Call Center: 0328 813 50 10</span>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <span>info@ibnisinahastanesi.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 İbni Sina Hastanesi. Tüm hakları saklıdır.</p>
+            <p>Design with health in mind</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Search & Category Filter Logic
+        const deptSearch = document.getElementById('deptSearch');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.dept-card');
+
+        function filterDepts() {
+            const query = deptSearch.value.trim().toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const tags = card.getAttribute('data-tags').toLowerCase();
+                const textMatch = title.includes(query) || tags.includes(query);
+                const categoryMatch = activeFilter === 'all' || category === activeFilter;
+
+                if (textMatch && categoryMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        deptSearch.addEventListener('input', filterDepts);
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterDepts();
+            });
+        });
+    </script>
+</body>
+</html>

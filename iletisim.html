@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim & Nöbetçi Eczaneler - İbni Sina Hastanesi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .pharmacy-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .pharmacy-badge {
+            background-color: #fee2e2;
+            color: #ef4444;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            position: absolute;
+            top: 20px;
+            right: 24px;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+        }
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+        <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-info">
+                    <span><i data-lucide="phone"></i> 0328 813 50 10</span>
+                    <span><i data-lucide="mail"></i> info@ibnisinahastanesi.com</span>
+                </div>
+                <div class="top-bar-socials">
+                    <a href="https://www.facebook.com/pages/Osmaniye-%C3%96zel-%C4%B0bnisina-Hastanesi/132233293653245?fref=ts" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="http://twitter.com/ibnisinahastane" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osmaniye+Ozel+Ibni+Sina+Hastanesi" target="_blank" aria-label="Google Maps"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></a>
+                    <a href="https://www.instagram.com/osmaniyeibnisinahastanesi/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                <li><a href="iletisim.html" class="active">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: var(--primary); cursor: pointer;">TR</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">|</span>
+                    <span style="font-weight: 500; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">EN</span>
+                </div>
+                <a href="tel:03288135010" style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>İletişim & Ulaşım</h1>
+            <p>Hastanemizin adres bilgileri, telefon numaraları, ulaşım haritası ve çevremizdeki güncel nöbetçi eczaneler.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container section" style="padding-top: 40px;">
+        <div class="contact-grid">
+            
+            <!-- Left Column: Contact info & Form -->
+            <div>
+                <!-- Contact Details Card -->
+                <div style="background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-sm); margin-bottom: 32px;">
+                    <h2 style="font-size: 1.5rem; margin-bottom: 24px;">Hızlı İletişim Kanalları</h2>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+                        <div>
+                            <h4 style="font-size: 1rem; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                                <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i>
+                                <span>Telefon Numaraları</span>
+                            </h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                                Çağrı Merkezi: <b>0328 813 50 10</b><br>
+                                Santral: <b>0312 000 00 00</b>
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1rem; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                                <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                                <span>E-Posta Adresleri</span>
+                            </h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                                Genel Bilgi: <b>info@ibnisina.com</b><br>
+                                Randevu İşlem: <b>randevu@ibnisina.com</b>
+                            </p>
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <h4 style="font-size: 1rem; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                                <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+                                <span>Açık Adres</span>
+                            </h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">
+                                Atatürk Mahallesi, İbni Sina Caddesi No:12, Çankaya / Ankara (Metro Çankaya istasyonu 100m yürüyüş mesafesi)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Placeholder -->
+                <div class="map-placeholder">
+                    <i data-lucide="map" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.7;"></i>
+                    <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 8px;">İnteraktif Ulaşım Haritası</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); text-align: center; max-width: 400px; padding: 0 20px;">
+                        Google Maps üzerinde hastanemizin yerini görün ve yol tarifi alın. (Metro ve Otobüs duraklarına yakındır.)
+                    </p>
+                </div>
+
+                <!-- Contact Form -->
+                <div style="background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-sm);">
+                    <h2 style="font-size: 1.5rem; margin-bottom: 8px;">Öneri ve Mesaj Formu</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Hizmet kalitemizi artırmamıza yardımcı olun. Düşüncelerinizi paylaşın.</p>
+                    
+                    <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label for="cName">Adınız Soyadınız</label>
+                                <input type="text" id="cName" required placeholder="Ad Soyad">
+                            </div>
+                            <div class="form-group">
+                                <label for="cEmail">E-Posta Adresiniz</label>
+                                <input type="email" id="cEmail" required placeholder="ornek@eposta.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cSubject">Konu</label>
+                            <input type="text" id="cSubject" required placeholder="Hangi konuda yazıyorsunuz?">
+                        </div>
+                        <div class="form-group">
+                            <label for="cMessage">Mesajınız</label>
+                            <textarea id="cMessage" rows="5" required style="padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid var(--border); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: var(--transition); background-color: var(--bg-main);" placeholder="Mesajınızı buraya girin..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+                            <i data-lucide="send"></i>
+                            <span>Mesajı Gönder</span>
+                        </button>
+                    </form>
+
+                    <!-- Success Message Alert -->
+                    <div id="contactSuccess" style="display: none; background-color: #ecfdf5; border: 1px solid #10b981; border-radius: var(--radius-md); padding: 20px; text-align: center; margin-top: 20px; color: #065f46;">
+                        <i data-lucide="check-circle" style="width: 32px; height: 32px; color: var(--success); margin-bottom: 8px;"></i>
+                        <h4 style="color: var(--success); font-size: 1.1rem; margin-bottom: 4px;">Mesajınız Başarıyla İletildi!</h4>
+                        <p style="font-size: 0.9rem;">Değerlendirmeleriniz incelenecek ve en kısa sürede geri dönüş yapılacaktır.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Duty Pharmacies Widget -->
+            <div>
+                <div style="background-color: var(--secondary); color: white; border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px; text-align: center;">
+                    <i data-lucide="heart-handshake" style="width: 36px; height: 36px; color: var(--accent); margin-bottom: 12px;"></i>
+                    <h3 style="color: white; font-size: 1.25rem; margin-bottom: 4px;">Nöbetçi Eczaneler</h3>
+                    <p style="color: #94a3b8; font-size: 0.85rem;">Bugün Açık Olan Yakın Eczaneler</p>
+                </div>
+
+                <!-- Pharmacy 1 -->
+                <div class="pharmacy-card">
+                    <span class="pharmacy-badge">Hastane Karşısı</span>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px; color: var(--primary);">Şifa Eczanesi</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">
+                        <i data-lucide="map-pin" style="width: 14px; height: 14px; vertical-align: text-bottom; margin-right: 4px;"></i>
+                        Hastanenin ana giriş kapısının tam karşısında yer almaktadır.
+                    </p>
+                    <div style="display: flex; gap: 8px;">
+                        <a href="tel:03121111111" class="btn btn-secondary" style="flex: 1; padding: 8px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                            <i data-lucide="phone" style="width: 14px; height: 14px;"></i> Ara
+                        </a>
+                        <a href="#" class="btn btn-outline" style="flex: 1; padding: 8px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                            <i data-lucide="navigation" style="width: 14px; height: 14px;"></i> Yol Tarifi
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pharmacy 2 -->
+                <div class="pharmacy-card">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px; color: var(--primary);">Can Eczanesi</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">
+                        <i data-lucide="map-pin" style="width: 14px; height: 14px; vertical-align: text-bottom; margin-right: 4px;"></i>
+                        İbni Sina Caddesi, Metro Çankaya İstasyon Çıkışı yanı.
+                    </p>
+                    <div style="display: flex; gap: 8px;">
+                        <a href="tel:03122222222" class="btn btn-secondary" style="flex: 1; padding: 8px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                            <i data-lucide="phone" style="width: 14px; height: 14px;"></i> Ara
+                        </a>
+                        <a href="#" class="btn btn-outline" style="flex: 1; padding: 8px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                            <i data-lucide="navigation" style="width: 14px; height: 14px;"></i> Yol Tarifi
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pharmacy 3 -->
+                <div class="pharmacy-card">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px; color: var(--primary);">Hayat Eczanesi</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">
+                        <i data-lucide="map-pin" style="width: 14px; height: 14px; vertical-align: text-bottom; margin-right: 4px;"></i>
+                        Atatürk Bulvarı, No:84/C, Çankaya Kültür Merkezi Yanı.
+                    </p>
+                    <div style="display: flex; gap: 8px;">
+                        <a href="tel:03123333333" class="btn btn-secondary" style="flex: 1; padding: 8px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                            <i data-lucide="phone" style="width: 14px; height: 14px;"></i> Ara
+                        </a>
+                        <a href="#" class="btn btn-outline" style="flex: 1; padding: 8px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                            <i data-lucide="navigation" style="width: 14px; height: 14px;"></i> Yol Tarifi
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i data-lucide="map-pin" style="width: 24px; height: 24px; color: var(--primary);"></i>
+                    <span>İbni Sina</span>
+                </a>
+                <p>1998 yılından bu yana ileri tıp teknolojisini şefkatli bakım anlayışıyla birleştirerek şifa dağıtıyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Hızlı Erişim</h4>
+                <ul>
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                    <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                    <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                    <li><a href="iletisim.html">İletişim & Nöbetçiler</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Bölümlerimiz</h4>
+                <ul>
+                    <li><a href="departmanlar.html#kardiyoloji">Kardiyoloji</a></li>
+                    <li><a href="departmanlar.html#pediatri">Çocuk Sağlığı</a></li>
+                    <li><a href="departmanlar.html#noroloji">Nöroloji</a></li>
+                    <li><a href="departmanlar.html#ortopedi">Ortopedi</a></li>
+                    <li><a href="departmanlar.html#dermatoloji">Dermatoloji</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Bize Ulaşın</h4>
+                <ul>
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        <span>Atatürk Mah. İbni Sina Cad. No:12, Çankaya, Ankara</span>
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <span>Call Center: 0328 813 50 10</span>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <span>info@ibnisinahastanesi.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 İbni Sina Hastanesi. Tüm hakları saklıdır.</p>
+            <p>Design with health in mind</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Contact Form Submit Handler
+        const contactForm = document.getElementById('contactForm');
+        const contactSuccess = document.getElementById('contactSuccess');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Hide form and display success alert
+            contactForm.style.display = 'none';
+            contactSuccess.style.display = 'block';
+            
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

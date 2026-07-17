@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurumsal - İbni Sina Hastanesi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Bento Grid Style for Mission & Vision */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .bento-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .bento-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        .bento-primary h3 {
+            color: white;
+        }
+        .bento-primary p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Stats Grid for Capacity Facts */
+        .capacity-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .capacity-stat-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .capacity-stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .capacity-stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .capacity-stat-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Quality standards container */
+        .quality-card {
+            background-color: var(--secondary);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+        .quality-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            list-style: none;
+            margin-top: 40px;
+        }
+        .quality-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+        .quality-list li svg {
+            color: var(--accent);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .value-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--bg-main);
+            color: var(--primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        .value-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .bento-card {
+                grid-column: span 12 !important;
+            }
+            .capacity-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .quality-list {
+                grid-template-columns: 1fr;
+            }
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .capacity-stats {
+                grid-template-columns: 1fr;
+            }
+            .quality-card {
+                padding: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+        <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-info">
+                    <span><i data-lucide="phone"></i> 0328 813 50 10</span>
+                    <span><i data-lucide="mail"></i> info@ibnisinahastanesi.com</span>
+                </div>
+                <div class="top-bar-socials">
+                    <a href="https://www.facebook.com/pages/Osmaniye-%C3%96zel-%C4%B0bnisina-Hastanesi/132233293653245?fref=ts" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="http://twitter.com/ibnisinahastane" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osmaniye+Ozel+Ibni+Sina+Hastanesi" target="_blank" aria-label="Google Maps"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></a>
+                    <a href="https://www.instagram.com/osmaniyeibnisinahastanesi/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: var(--primary); cursor: pointer;">TR</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">|</span>
+                    <span style="font-weight: 500; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">EN</span>
+                </div>
+                <a href="tel:03288135010" style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header" style="position: relative; height: 380px; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.1) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDrj3sJ7RjibUoH1xkQ3TCy5q2GHGcjX-1dbFjURee9MgPuW93x92yQczEGdMuAC3D8llqUWF8NQUZB5dc1QJoFfQPG4iU-VDqsWVe5RaTJgY4VjKpCbsYzA48XKJl3amx8bjBhGX8lz5JLqwgqaamxl567lN182Yqz_SMsBOIF3cj8v54eOqLJ3ueu12ocjzYZ38TyM0-RsgmncBkiU28ArUWiWYVevih7BHTu_p1SQl9Bz6xdW7zm'); background-size: cover; background-position: center 30%; border: none; padding: 0;">
+        <div class="container" style="text-align: left; z-index: 10;">
+            <div style="max-w: 600px;">
+                <div style="width: 48px; height: 4px; background-color: var(--primary); margin-bottom: 24px;"></div>
+                <span style="font-weight: 700; color: rgba(255, 255, 255, 0.9); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 8px;">HAKKIMIZDA</span>
+                <h1 style="color: white; font-size: 3rem; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Kurumsal</h1>
+                <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.2rem; border-left: 2px solid rgba(255, 255, 255, 0.5); padding-left: 16px; line-height: 1.5; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">Sağlığınız İçin Modern Tıbbın Gücüyle 25 Yıldır Yanınızdayız.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 60px;">
+            <div>
+                <span style="font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 12px;">BİZ KİMİZ?</span>
+                <h2 style="font-size: 2.25rem; margin-bottom: 24px; text-align: left;">Şifa Dağıtan Bir Mirasın Modern Temsilcisi</h2>
+                <div style="color: var(--text-muted); display: flex; flex-direction: column; gap: 16px; font-size: 1.05rem; line-height: 1.7; margin-bottom: 32px;">
+                    <p>Özel hastanecilik kavramının yaygınlaşmasının çok eski olmadığı ülkemizde 2002 yılında <strong>"sağlıkta güvence"</strong> sloganıyla çıktığımız yolda, değerli halkımızın bize duyduğu güven ve sektörde öncü kuruluş olmanın verdiği sorumlulukla emin adımlarla ilerliyoruz.</p>
+                    <p>Hizmete başladığımız günden bu yana gerek doktorlarımız ve yöneticilerimiz, gerekse yardımcı sağlık ve idari personelimiz ile birlikte hizmette öncü kuruluş olmak, koşulsuz hasta memnuniyeti sağlayabilmek, etik ilkelerden taviz vermeden en kaliteli sağlık hizmetini sunmak için gayretle çalışıyoruz.</p>
+                    <p>Halkımızın her türlü sağlık ihtiyacına cevap verebilmek için gelişen tıp teknolojilerini yakından takip ediyor, her geçen gün tıbbi donanımımızı biraz daha genişletiyoruz. Başlangıçta tek bir binadan müteşekkil hastanemizi 2005 yılında poliklinikler için yapılan ek binamızla genişleterek, hastalarımızın daha rahat bir ortamda muayene ve tedavi olabilmelerine olanak sağlayacak şekilde dizayn ettik.</p>
+                </div>
+            </div>
+            <div>
+                <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; height: 450px; box-shadow: var(--shadow-lg);">
+                    <img class="w-full h-full object-cover" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoehExqDNaZUk1i5Qp-OB-zmXsJ1XWdpVi6lnM1Xk7oJIdBexXDoZRJB4H1SVEtaRbx626xUmf-dVZmzQHdx8_ALBJ6SBFu1FoRSZgkoA3_RiOi42pSAVM7U2y1SPdF_VFmDykrrrdDf05hk4UfzUPVcA2O6Jkwxq8DJ3n4cOJoSUCh7YOvOxm5tsrpl_OBVjJkH586G1RicfGjdjggJIznN-P5579oNYCiwjWn2apaVKp0fsT3A1c" alt="Modern hospital lobby">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(15,23,42,0.8), transparent); padding: 32px; color: white;">
+                        <p style="font-size: 1.25rem; font-weight: 700; color: white;">Sağlıkta Güvence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Statistics & Hospital Capacities -->
+        <div class="container" style="border-top: 1px solid var(--border); padding-top: 60px;">
+            <div class="section-title">
+                <h2>Rakamlarla İbni Sina Hastanesi</h2>
+                <p>Modern altyapımız, geniş hizmet alanımız ve uzman kadromuzla Osmaniye'nin hizmetindeyiz.</p>
+            </div>
+            <div class="capacity-stats">
+                <div class="capacity-stat-card">
+                    <h3>4296m²</h3>
+                    <p>Kapalı Hizmet Alanı</p>
+                </div>
+                <div class="capacity-stat-card">
+                    <h3>74 Yatak</h3>
+                    <p>Hasta Yatak Kapasitesi</p>
+                </div>
+                <div class="capacity-stat-card">
+                    <h3>19 Küvöz</h3>
+                    <p>3. Basamak Yenidoğan Yoğun Bakım</p>
+                </div>
+                <div class="capacity-stat-card">
+                    <h3>200+</h3>
+                    <p>Sağlık ve İdari Personel</p>
+                </div>
+                <div class="capacity-stat-card">
+                    <h3>3 Adet</h3>
+                    <p>Modern Ameliyathane</p>
+                </div>
+                <div class="capacity-stat-card">
+                    <h3>20 Adet</h3>
+                    <p>Branş Polikliniği</p>
+                </div>
+                <div class="capacity-stat-card">
+                    <h3>28 Hekim</h3>
+                    <p>Uzman & Pratisyen Hekim Kadrosu</p>
+                </div>
+                <div class="capacity-stat-card">
+                    <h3>24/7</h3>
+                    <p>Kesintisiz Acil Servis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section (Bento Grid) -->
+    <section class="section" style="background-color: var(--bg-main);">
+        <div class="container">
+            <div class="section-title">
+                <span style="font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 8px;">GELECEK PROJEKSİYONUMUZ</span>
+                <h2>Misyonumuz ve Vizyonumuz</h2>
+            </div>
+            
+            <div class="bento-grid">
+                <!-- Mission -->
+                <div class="bento-card" style="grid-column: span 7;">
+                    <div style="width: 56px; height: 56px; background-color: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <i data-lucide="flag" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 16px;">Misyonumuz</h3>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7;">
+                        Bireylerin yaşam kalitesini artırmak için tıp bilimindeki güncel gelişmeleri takip ederek, yüksek standartlı sağlık hizmetlerini toplumun her kesimine etik, güvenilir ve sürdürüebilinir bir modelle sunmaktır.
+                    </p>
+                </div>
+                <!-- Vision -->
+                <div class="bento-card bento-primary" style="grid-column: span 5;">
+                    <div style="width: 56px; height: 56px; background-color: rgba(255,255,255,0.2); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <i data-lucide="eye" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 16px;">Vizyonumuz</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7;">
+                        Teknolojik altyapısı ve uzman akademik kadrosuyla uluslararası platformda tanınan, sağlık turizminde öncü ve Türkiye'nin en güvenilen sağlık kurumu olma vizyonunu taşıyoruz.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Policy -->
+    <section class="container section">
+        <div class="quality-card">
+            <div style="position: absolute; right: 40px; top: 50%; transform: translateY(-50%); opacity: 0.05; pointer-events: none; font-size: 200px;">
+                <i data-lucide="badge-check" style="width: 240px; height: 240px;"></i>
+            </div>
+            <div style="position: relative; z-index: 10; max-width: 700px;">
+                <span style="font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 12px;">STANDARTLARIMIZ</span>
+                <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">Kalite Politikamız</h2>
+                <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.15rem; line-height: 1.7; margin-bottom: 40px;">
+                    Hastanemiz, ulusal ve uluslararası kalite standartlarını (SKS, ISO) temel alarak, hata payını minimize eden, sürekli iyileşmeyi hedefleyen ve hasta güvenliğini tüm süreçlerin merkezine koyan bir yönetim anlayışını benimser.
+                </p>
+                <ul class="quality-list">
+                    <li>
+                        <i data-lucide="check-circle" style="width: 20px; height: 20px; color: var(--accent);"></i>
+                        <span>Sürekli Eğitilen Profesyonel Kadro</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle" style="width: 20px; height: 20px; color: var(--accent);"></i>
+                        <span>Sıfır Atık ve Çevre Dostu Yaklaşım</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle" style="width: 20px; height: 20px; color: var(--accent);"></i>
+                        <span>Hasta Hakları ve Mahremiyeti</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle" style="width: 20px; height: 20px; color: var(--accent);"></i>
+                        <span>Klinik Yönetişim ve Veriye Dayalı Kararlar</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bizi Biz Yapan Değerlerimiz</h2>
+            </div>
+            
+            <div class="values-grid">
+                <!-- Value 1 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; margin-bottom: 8px;">İnsan Odaklılık</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Her adımda hastalarımızın ve çalışanlarımızın sağlığını önceliyoruz.</p>
+                </div>
+                <!-- Value 2 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i data-lucide="microscope"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; margin-bottom: 8px;">Hassasiyet</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Teşhis ve tedavide klinik mükemmellik için milimetrik hassasiyet.</p>
+                </div>
+                <!-- Value 3 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; margin-bottom: 8px;">İnovasyon</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Sağlıkta en son teknolojileri sistemimize entegre ediyoruz.</p>
+                </div>
+                <!-- Value 4 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; margin-bottom: 8px;">Güven</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Şeffaf iletişim ve dürüstlükle hastalarımızın güvenini kazanıyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+                </a>
+                <p>Modern tıbbın tüm imkanlarını insan odaklı yaklaşımla birleştirerek, güvenilir sağlık hizmeti sunuyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="kurumsal.html">Hakkımızda</a></li>
+                    <li><a href="kurumsal.html">Kalite Politikamız</a></li>
+                    <li><a href="iletisim.html">İş Başvurusu</a></li>
+                    <li><a href="iletisim.html">Laboratuvar Sonuçları</a></li>
+                    <li><a href="iletisim.html">Radyolojik Görüntüleme</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Hızlı Bağlantılar</h4>
+                <ul>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                    <li><a href="hasta-rehberi.html">KVK Aydınlatma Metni</a></li>
+                    <li><a href="hasta-rehberi.html">Çerez Politikası</a></li>
+                    <li><a href="hasta-rehberi.html#faq">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>İletişim Bilgileri</h4>
+                <ul>
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        <span>Merkez Mah. Sağlık Sok. No:12, Osmaniye</span>
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <span>Call Center: 0328 813 50 10</span>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <span>info@ibnisinahastanesi.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 İbni Sina Hastanesi. Tüm hakları saklıdır.</p>
+            <p>Design with health in mind</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

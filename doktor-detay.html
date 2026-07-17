@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hekim Detay Profili - İbni Sina Hastanesi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Nav -->
+        <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-info">
+                    <span><i data-lucide="phone"></i> 0328 813 50 10</span>
+                    <span><i data-lucide="mail"></i> info@ibnisinahastanesi.com</span>
+                </div>
+                <div class="top-bar-socials">
+                    <a href="https://www.facebook.com/pages/Osmaniye-%C3%96zel-%C4%B0bnisina-Hastanesi/132233293653245?fref=ts" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="http://twitter.com/ibnisinahastane" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osmaniye+Ozel+Ibni+Sina+Hastanesi" target="_blank" aria-label="Google Maps"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></a>
+                    <a href="https://www.instagram.com/osmaniyeibnisinahastanesi/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                <li><a href="doktorlar.html" class="active">Hekimlerimiz</a></li>
+                <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: var(--primary); cursor: pointer;">TR</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">|</span>
+                    <span style="font-weight: 500; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">EN</span>
+                </div>
+                <a href="tel:03288135010" style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header (Dynamic Title) -->
+    <section class="page-header" style="padding: 120px 0 60px;">
+        <div class="container">
+            <span id="docHeaderDept" style="text-transform: uppercase; font-weight: 600; letter-spacing: 1px; color: var(--accent); font-size: 0.9rem;">Bölüm</span>
+            <h1 id="docHeaderName" style="margin-top: 10px;">Hekim Adı</h1>
+            <p id="docHeaderTitle">Uzmanlık Unvanı</p>
+        </div>
+    </section>
+
+    <!-- Doctor Profile Info -->
+    <section class="section">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start;">
+            
+            <!-- Left Column: Photo & Action -->
+            <div style="position: sticky; top: 120px;">
+                <div style="background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; text-align: center; box-shadow: var(--shadow-md);">
+                    <div style="width: 140px; height: 140px; border-radius: 50%; background-color: var(--bg-main); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; overflow: hidden; border: 2px solid var(--border);">
+                        <img id="docCardImage" alt="Hekim Fotoğrafı" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 id="docCardName" style="font-size: 1.25rem; margin-bottom: 4px;">Hekim Adı</h3>
+                    <p id="docCardDept" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Bölüm</p>
+                    
+                    <a id="docBookingBtn" href="iletisim.html" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i data-lucide="mail"></i>
+                        <span>İletişime Geçin</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Column: Tabs/Content -->
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-sm);">
+                <div style="margin-bottom: 32px;">
+                    <h2 style="font-size: 1.75rem; margin-bottom: 16px;">Hekim Hakkında</h2>
+                    <p id="docBio" style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">Hekim biyografisi yükleniyor...</p>
+                </div>
+                
+                <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
+
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 1.35rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="graduation-cap" style="color: var(--primary);"></i>
+                        <span>Eğitim & Deneyim</span>
+                    </h3>
+                    <ul id="docEducation" style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--text-muted);">
+                        <!-- Education List -->
+                    </ul>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
+
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 1.35rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="award" style="color: var(--primary);"></i>
+                        <span>Tıbbi İlgi Alanları</span>
+                    </h3>
+                    <ul id="docInterests" style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--text-muted);">
+                        <!-- Clinical Interests List -->
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+                </a>
+                <p>1998 yılından bu yana ileri tıp teknolojisini şefkatli bakım anlayışıyla birleştirerek şifa dağıtıyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Hızlı Erişim</h4>
+                <ul>
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                    <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                    <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                    <li><a href="iletisim.html">İletişim & Nöbetçiler</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Bölümlerimiz</h4>
+                <ul>
+                    <li><a href="departmanlar.html#kardiyoloji">Kardiyoloji</a></li>
+                    <li><a href="departmanlar.html#pediatri">Çocuk Sağlığı</a></li>
+                    <li><a href="departmanlar.html#noroloji">Nöroloji</a></li>
+                    <li><a href="departmanlar.html#ortopedi">Ortopedi</a></li>
+                    <li><a href="departmanlar.html#dermatoloji">Dermatoloji</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Bize Ulaşın</h4>
+                <ul>
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        <span>Atatürk Mah. İbni Sina Cad. No:12, Çankaya, Ankara</span>
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <span>Call Center: 0328 813 50 10</span>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <span>info@ibnisinahastanesi.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 İbni Sina Hastanesi. Tüm hakları saklıdır.</p>
+            <p>Design with health in mind</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Doctor Database for prototype simulation
+        const doctorsDB = {
+            "ahmet-yilmaz": {
+                name: "Prof. Dr. Ahmet Yılmaz",
+                dept: "Kardiyoloji",
+                deptKey: "kardiyoloji",
+                title: "Girişimsel Kardiyolog",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDdc6_6XaKF5Gtv9j2CVrZolmMNKCMbpbbPKqhzQVoKGUy_vUlX7bolxqEMPS1u4w3T3ZgNDjgyhg3YvoxLD2rc7Qv7vdjUwrfRx9AbzXT8yJ8NgC3Lfk8IDYCDV0WXXAKx_LFSxFm3sx8p4fD92RqBCcYpgUN48uNg8CSZwoZiYihsgI-5k_l80b5sg8Z3lWqk6wSZhcvPKHg95IBJ_TiTlLlKM96LBdbDLlWgRNVBBCzHcYk3i6pn",
+                bio: "Prof. Dr. Ahmet Yılmaz, kardiyoloji alanında 20 yılı aşkın süredir hastalarına hizmet vermektedir. Özellikle koroner arter hastalıkları, stent uygulamaları, kalp pilleri ve dirençli hipertansiyon alanında çok sayıda başarılı operasyona imza atmıştır. Ulusal ve uluslararası hakemli dergilerde yayımlanmış 50'den fazla makalesi bulunmaktadır.",
+                edu: [
+                    "Hacettepe Üniversitesi Tıp Fakültesi (Lisans)",
+                    "Ankara Üniversitesi Tıp Fakültesi - Kardiyoloji (Uzmanlık)",
+                    "Cleveland Clinic, ABD - Girişimsel Kardiyoloji (Fellowship)"
+                ],
+                interests: [
+                    "Koroner Anjiyografi ve Stent Uygulamaları",
+                    "Kalp Yetmezliği Tanı ve Tedavisi",
+                    "Hipertansiyon ve Ritim Bozuklukları"
+                ]
+            },
+            "ayse-kaya": {
+                name: "Doç. Dr. Ayşe Kaya",
+                dept: "Çocuk Sağlığı ve Hastalıkları",
+                deptKey: "pediatri",
+                title: "Pediatri & Çocuk Alerjisi Uzmanı",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBpRya8_gR1INeKh8mWD90SQWFuDB-tfhrXZemwmmFgGkdna_sKWGA7PHjii_2XLGf68743_AFxb9luaDknySSvZrByPAjG0kVtpMfyhxGxhCgHiysd4zToevT5SYhqHWgIPHjXHzFBwnkp52ChSEdO_sJKmfP-PQLM4vMvPJzP_vuXtdUloJLBt3PCtqEiuEnbCsc8aLano5Eh1ubwSC6QNraamTgEq4H_OsEQrckuHOaX5BIH0g4o",
+                bio: "Doç. Dr. Ayşe Kaya, çocuk sağlığı ve gelişimi konusunda uzmandır. Çocukluk çağı alerjileri, astım, beslenme bozuklukları ve bağışıklık sistemi hastalıkları üzerinde yoğunlaşmıştır. Ailelerin ve çocukların güler yüzlü hekimi olarak tanınmaktadır.",
+                edu: [
+                    "İstanbul Üniversitesi Cerrahpaşa Tıp Fakültesi (Lisans)",
+                    "Dr. Sami Ulus Çocuk Hastanesi (Uzmanlık)",
+                    "Gazi Üniversitesi Tıp Fakültesi - Çocuk İmmünolojisi ve Alerji Hastalıkları (Yandal)"
+                ],
+                interests: [
+                    "Çocukluk Çağı Astımı ve Alerjik Rinit",
+                    "Bebeklik Dönemi Beslenme ve Gelişim Takibi",
+                    "Çocuklarda Tekrarlayan Enfeksiyonlar"
+                ]
+            },
+            "can-demir": {
+                name: "Uzm. Dr. Can Demir",
+                dept: "Nöroloji",
+                deptKey: "noroloji",
+                title: "Nöroloji Uzmanı",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBeOa3w1X9GYnf59y-LBYXsxXX8-oMvQ9mLVjzHLJcVo-jBmhSLv51ZK8E-oZJ5iUh4SPEeMNVchW8TLiCscGyan5JlTQPvKnJaeuYV79yyel9uQ58_wCZVP4geC0EYlV_Mx0xvS9CyZ5Eapo37OYQ0byByiBHEHnuuB8VNiKh4PPFYtM9phVrIjzqAlJLREoJIqfmAIjbf7yMSEZM0VJa-Zgo_32o-ST3JcSMbrSU82in_8RDBvrQE",
+                bio: "Uzm. Dr. Can Demir, beyin ve sinir hastalıkları alanında uzmanlaşmıştır. Özellikle kronik baş ağrıları, migren botoksu uygulamaları, Parkinson ve Alzheimer gibi nörodejeneratif hastalıkların takibinde yenilikçi yaklaşımları uygulamaktadır.",
+                edu: [
+                    "Ege Üniversitesi Tıp Fakültesi (Lisans)",
+                    "Dokuz Eylül Üniversitesi Tıp Fakültesi - Nöroloji (Uzmanlık)"
+                ],
+                interests: [
+                    "Migren ve Başağrısı Tedavisi (Migren Botoksu)",
+                    "Parkinson ve Hareket Bozuklukları",
+                    "Elektromiyografi (EMG) ve Elektroensefalografi (EEG)"
+                ]
+            },
+            "fatma-sahin": {
+                name: "Uzm. Dr. Fatma Şahin",
+                dept: "Dermatoloji (Cildiye)",
+                deptKey: "dermatoloji",
+                title: "Dermatolog & Kozmetoloji Uzmanı",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBeOa3w1X9GYnf59y-LBYXsxXX8-oMvQ9mLVjzHLJcVo-jBmhSLv51ZK8E-oZJ5iUh4SPEeMNVchW8TLiCscGyan5JlTQPvKnJaeuYV79yyel9uQ58_wCZVP4geC0EYlV_Mx0xvS9CyZ5Eapo37OYQ0byByiBHEHnuuB8VNiKh4PPFYtM9phVrIjzqAlJLREoJIqfmAIjbf7yMSEZM0VJa-Zgo_32o-ST3JcSMbrSU82in_8RDBvrQE",
+                bio: "Uzm. Dr. Fatma Şahin, cilt sağlığı ve kozmetik dermatoloji alanında geniş deneyime sahiptir. Akne, egzama, sedef, ben takibi gibi genel dermatoloji konularının yanı sıra botoks, dolgu ve mezoterapi gibi estetik operasyonları gerçekleştirmektedir.",
+                edu: [
+                    "Gazi Üniversitesi Tıp Fakültesi (Lisans)",
+                    "Hacettepe Üniversitesi Tıp Fakültesi - Deri ve Zührevi Hastalıklar (Uzmanlık)"
+                ],
+                interests: [
+                    "Akne (Sivilce) ve İzlerinin Tedavisi",
+                    "Kozmetik İşlemler (Botoks, Dolgu, Gençlik Aşısı)",
+                    "Bilgisayarlı Dermatoskopi ile Ben Taraması"
+                ]
+            },
+            "mehmet-karasu": {
+                name: "Prof. Dr. Mehmet Karasu",
+                dept: "Genel Cerrahi",
+                deptKey: "genel-cerrahi",
+                title: "Genel Cerrahi & Obezite Uzmanı",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDyi6n-CGUS8iKkkn2w7cjTbnGQjRrIFQfytAD4kl0Dqnon1JryEGIsYh1gUz4HABi9pRr7vOu88JmqecvOB4J1A37pBq7Ir6UA9_dgmLiWP5J6MYU5agRk5-qJqFWKyYUId1mf7dDWI_kkG5cmLc3v72Z56OyZrBdrNJOqljs5xCL5AHLsYYK2F8FbcFRWlUx1pcSt9CvMhxqBgRuaphH-qZb4rkGVpBiImTb1ZLy8wK50SVrm1CJG",
+                bio: "Prof. Dr. Mehmet Karasu, laparoskopik cerrahi ve obezite (mide küçültme) ameliyatlarında Türkiye'nin önde gelen hekimlerindendir. Kanser cerrahisi alanında da gelişmiş minimal invaziv cerrahi yöntemlerini başarıyla uygulamaktadır.",
+                edu: [
+                    "Ankara Üniversitesi Tıp Fakültesi (Lisans)",
+                    "Türkiye Yüksek İhtisas Hastanesi - Genel Cerrahi (Uzmanlık)"
+                ],
+                interests: [
+                    "Bariatrik ve Metabolik Cerrahi (Tüp Mide, Mide By-pass)",
+                    "Laparoskopik Fıtık ve Safra Kesesi Ameliyatları",
+                    "Onkolojik Cerrahi (Meme ve Kolon Kanseri)"
+                ]
+            },
+            "elif-tekin": {
+                name: "Doç. Dr. Elif Tekin",
+                dept: "Göz Hastalıkları",
+                deptKey: "goz",
+                title: "Göz Hastalıkları & Lazer Cerrahisi",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBpRya8_gR1INeKh8mWD90SQWFuDB-tfhrXZemwmmFgGkdna_sKWGA7PHjii_2XLGf68743_AFxb9luaDknySSvZrByPAjG0kVtpMfyhxGxhCgHiysd4zToevT5SYhqHWgIPHjXHzFBwnkp52ChSEdO_sJKmfP-PQLM4vMvPJzP_vuXtdUloJLBt3PCtqEiuEnbCsc8aLano5Eh1ubwSC6QNraamTgEq4H_OsEQrckuHOaX5BIH0g4o",
+                bio: "Doç. Dr. Elif Tekin, göz içi akıllı mercek uygulamaları, katarakt cerrahisi ve göz çizdirme (lazer) tedavilerinde uzmandır. Çocuk göz sağlığı ve şaşılık tedavilerinde de ileri teknikler uygulamaktadır.",
+                edu: [
+                    "Marmara Üniversitesi Tıp Fakültesi (İngilizce - Lisans)",
+                    "Beyoğlu Göz Eğitim ve Araştırma Hastanesi (Uzmanlık)"
+                ],
+                interests: [
+                    "Katarakt ve Akıllı Mercek Uygulamaları",
+                    "Lazer Refraktif Cerrahi (Miyop, Hipermetrop, Astigmat)",
+                    "Pediatrik Oftalmoloji ve Şaşılık"
+                ]
+            }
+        };
+
+        // Render Doctor Data
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const docKey = params.get('doc') || 'ahmet-yilmaz';
+            const docData = doctorsDB[docKey] || doctorsDB['ahmet-yilmaz'];
+
+            // Fill page components
+            document.getElementById('docHeaderName').textContent = docData.name;
+            document.getElementById('docHeaderTitle').textContent = docData.title;
+            document.getElementById('docHeaderDept').textContent = docData.dept;
+
+            document.getElementById('docCardName').textContent = docData.name;
+            document.getElementById('docCardDept').textContent = docData.dept;
+            document.getElementById('docBio').textContent = docData.bio;
+            
+            // Set image
+            document.getElementById('docCardImage').setAttribute('src', docData.image);
+            document.getElementById('docCardImage').setAttribute('alt', docData.name);
+
+            // Education List
+            const eduList = document.getElementById('docEducation');
+            eduList.innerHTML = '';
+            docData.edu.forEach(item => {
+                const li = document.createElement('li');
+                li.style.display = 'flex';
+                li.style.gap = '8px';
+                li.style.alignItems = 'center';
+                li.innerHTML = `<i data-lucide="circle-dot" style="width: 12px; height: 12px; color: var(--primary); flex-shrink: 0;"></i> <span>${item}</span>`;
+                eduList.appendChild(li);
+            });
+
+            // Interests List
+            const intList = document.getElementById('docInterests');
+            intList.innerHTML = '';
+            docData.interests.forEach(item => {
+                const li = document.createElement('li');
+                li.style.display = 'flex';
+                li.style.gap = '8px';
+                li.style.alignItems = 'center';
+                li.innerHTML = `<i data-lucide="check-circle" style="width: 16px; height: 16px; color: var(--success); flex-shrink: 0;"></i> <span>${item}</span>`;
+                intList.appendChild(li);
+            });
+
+            // Action Link for booking
+            document.getElementById('docBookingBtn').setAttribute('href', `iletisim.html?doc=${docKey}`);
+
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hekim Kadromuz - İbni Sina Hastanesi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Nav -->
+        <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-info">
+                    <span><i data-lucide="phone"></i> 0328 813 50 10</span>
+                    <span><i data-lucide="mail"></i> info@ibnisinahastanesi.com</span>
+                </div>
+                <div class="top-bar-socials">
+                    <a href="https://www.facebook.com/pages/Osmaniye-%C3%96zel-%C4%B0bnisina-Hastanesi/132233293653245?fref=ts" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="http://twitter.com/ibnisinahastane" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osmaniye+Ozel+Ibni+Sina+Hastanesi" target="_blank" aria-label="Google Maps"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></a>
+                    <a href="https://www.instagram.com/osmaniyeibnisinahastanesi/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                <li><a href="doktorlar.html" class="active">Hekimlerimiz</a></li>
+                <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: var(--primary); cursor: pointer;">TR</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">|</span>
+                    <span style="font-weight: 500; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">EN</span>
+                </div>
+                <a href="tel:03288135010" style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+                    <span>0328 813 50 10</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Hekimlerimiz</h1>
+            <p>Kendi alanında ulusal ve uluslararası başarılara sahip, deneyimli hekim kadromuz ile en güvenilir tedavi çözümleri.</p>
+        </div>
+    </section>
+
+    <!-- Advanced Filter Controls -->
+    <section class="container" style="margin-top: 40px; margin-bottom: 20px;">
+        <div class="filter-bar">
+            <div class="filter-inputs" style="width: 100%; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px;">
+                <div class="form-group" style="gap: 0;">
+                    <input type="text" id="docSearch" placeholder="Hekim adı veya soyadı ile arayın..." style="padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--border); outline: none;">
+                </div>
+                <div class="form-group" style="gap: 0;">
+                    <select id="filterDept" style="padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--border); outline: none; background-color: var(--bg-main);">
+                        <option value="">Tüm Bölümler</option>
+                        <option value="kardiyoloji">Kardiyoloji</option>
+                        <option value="pediatri">Çocuk Sağlığı ve Hastalıkları</option>
+                        <option value="noroloji">Nöroloji</option>
+                        <option value="ortopedi">Ortopedi ve Travmatoloji</option>
+                        <option value="dermatoloji">Dermatoloji (Cildiye)</option>
+                        <option value="genel-cerrahi">Genel Cerrahi</option>
+                        <option value="goz">Göz Hastalıkları</option>
+                    </select>
+                </div>
+                <div class="form-group" style="gap: 0;">
+                    <select id="filterTitle" style="padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--border); outline: none; background-color: var(--bg-main);">
+                        <option value="">Tüm Unvanlar</option>
+                        <option value="prof">Prof. Dr.</option>
+                        <option value="doc">Doç. Dr.</option>
+                        <option value="uzm">Uzm. Dr.</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Grid -->
+    <section class="section" style="padding-top: 20px;">
+        <div class="container">
+            <div class="doctors-grid" id="doctorsContainer">
+                
+                <!-- Dr 1: Ahmet Yılmaz -->
+                <div class="card doc-card" data-dept="kardiyoloji" data-title="prof" data-name="ahmet yilmaz">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Prof. Dr. Ahmet Yılmaz" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdc6_6XaKF5Gtv9j2CVrZolmMNKCMbpbbPKqhzQVoKGUy_vUlX7bolxqEMPS1u4w3T3ZgNDjgyhg3YvoxLD2rc7Qv7vdjUwrfRx9AbzXT8yJ8NgC3Lfk8IDYCDV0WXXAKx_LFSxFm3sx8p4fD92RqBCcYpgUN48uNg8CSZwoZiYihsgI-5k_l80b5sg8Z3lWqk6wSZhcvPKHg95IBJ_TiTlLlKM96LBdbDLlWgRNVBBCzHcYk3i6pn">
+                    </div>
+                    <div class="card-body">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase;">Kardiyoloji</span>
+                        <h3 style="margin-top: 8px;">Prof. Dr. Ahmet Yılmaz</h3>
+                        <p>Girişimsel Kardiyoloji, Kalp Yetmezliği, Hipertansiyon alanlarında 20 yılı aşkın uzmanlık.</p>
+                        <div style="margin-top: 20px;">
+                            <a href="doktor-detay.html?doc=ahmet-yilmaz" class="btn btn-primary" style="width: 100%; justify-content: center;">Profil Detayı</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr 2: Ayşe Kaya -->
+                <div class="card doc-card" data-dept="pediatri" data-title="doc" data-name="ayse kaya">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Doç. Dr. Ayşe Kaya" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpRya8_gR1INeKh8mWD90SQWFuDB-tfhrXZemwmmFgGkdna_sKWGA7PHjii_2XLGf68743_AFxb9luaDknySSvZrByPAjG0kVtpMfyhxGxhCgHiysd4zToevT5SYhqHWgIPHjXHzFBwnkp52ChSEdO_sJKmfP-PQLM4vMvPJzP_vuXtdUloJLBt3PCtqEiuEnbCsc8aLano5Eh1ubwSC6QNraamTgEq4H_OsEQrckuHOaX5BIH0g4o">
+                    </div>
+                    <div class="card-body">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase;">Çocuk Sağlığı ve Hastalıkları</span>
+                        <h3 style="margin-top: 8px;">Doç. Dr. Ayşe Kaya</h3>
+                        <p>Çocuk Alerjisi, Sağlıklı Çocuk Gelişimi, Çocuk Beslenmesi konularında uzmanlaşmış yaklaşım.</p>
+                        <div style="margin-top: 20px;">
+                            <a href="doktor-detay.html?doc=ayse-kaya" class="btn btn-primary" style="width: 100%; justify-content: center;">Profil Detayı</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr 3: Can Demir -->
+                <div class="card doc-card" data-dept="noroloji" data-title="uzm" data-name="can demir">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Uzm. Dr. Can Demir" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeOa3w1X9GYnf59y-LBYXsxXX8-oMvQ9mLVjzHLJcVo-jBmhSLv51ZK8E-oZJ5iUh4SPEeMNVchW8TLiCscGyan5JlTQPvKnJaeuYV79yyel9uQ58_wCZVP4geC0EYlV_Mx0xvS9CyZ5Eapo37OYQ0byByiBHEHnuuB8VNiKh4PPFYtM9phVrIjzqAlJLREoJIqfmAIjbf7yMSEZM0VJa-Zgo_32o-ST3JcSMbrSU82in_8RDBvrQE">
+                    </div>
+                    <div class="card-body">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase;">Nöroloji</span>
+                        <h3 style="margin-top: 8px;">Uzm. Dr. Can Demir</h3>
+                        <p>Migren ve Baş Ağrıları Tedavisi, Parkinson, Alzheimer Tanı ve Takip süreçleri lideri.</p>
+                        <div style="margin-top: 20px;">
+                            <a href="doktor-detay.html?doc=can-demir" class="btn btn-primary" style="width: 100%; justify-content: center;">Profil Detayı</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr 4: Fatma Şahin -->
+                <div class="card doc-card" data-dept="dermatoloji" data-title="uzm" data-name="fatma sahin">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Uzm. Dr. Fatma Şahin" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeOa3w1X9GYnf59y-LBYXsxXX8-oMvQ9mLVjzHLJcVo-jBmhSLv51ZK8E-oZJ5iUh4SPEeMNVchW8TLiCscGyan5JlTQPvKnJaeuYV79yyel9uQ58_wCZVP4geC0EYlV_Mx0xvS9CyZ5Eapo37OYQ0byByiBHEHnuuB8VNiKh4PPFYtM9phVrIjzqAlJLREoJIqfmAIjbf7yMSEZM0VJa-Zgo_32o-ST3JcSMbrSU82in_8RDBvrQE">
+                    </div>
+                    <div class="card-body">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase;">Dermatoloji (Cildiye)</span>
+                        <h3 style="margin-top: 8px;">Uzm. Dr. Fatma Şahin</h3>
+                        <p>Kozmetik Dermatoloji, Leke Tedavisi, Akne ve Egzama Tanı, Tedavi ve Estetik uygulamalar.</p>
+                        <div style="margin-top: 20px;">
+                            <a href="doktor-detay.html?doc=fatma-sahin" class="btn btn-primary" style="width: 100%; justify-content: center;">Profil Detayı</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr 5: Mehmet Karasu -->
+                <div class="card doc-card" data-dept="genel-cerrahi" data-title="prof" data-name="mehmet karasu">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Prof. Dr. Mehmet Karasu" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyi6n-CGUS8iKkkn2w7cjTbnGQjRrIFQfytAD4kl0Dqnon1JryEGIsYh1gUz4HABi9pRr7vOu88JmqecvOB4J1A37pBq7Ir6UA9_dgmLiWP5J6MYU5agRk5-qJqFWKyYUId1mf7dDWI_kkG5cmLc3v72Z56OyZrBdrNJOqljs5xCL5AHLsYYK2F8FbcFRWlUx1pcSt9CvMhxqBgRuaphH-qZb4rkGVpBiImTb1ZLy8wK50SVrm1CJG">
+                    </div>
+                    <div class="card-body">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase;">Genel Cerrahi</span>
+                        <h3 style="margin-top: 8px;">Prof. Dr. Mehmet Karasu</h3>
+                        <p>Obezite Cerrahisi, Laparoskopik Cerrahi ve Onkolojik Cerrahi alanlarında ulusal otorite.</p>
+                        <div style="margin-top: 20px;">
+                            <a href="doktor-detay.html?doc=mehmet-karasu" class="btn btn-primary" style="width: 100%; justify-content: center;">Profil Detayı</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr 6: Elif Tekin -->
+                <div class="card doc-card" data-dept="goz" data-title="doc" data-name="elif tekin">
+                    <div class="card-image-wrapper" style="height: 320px;">
+                        <img alt="Doç. Dr. Elif Tekin" style="width: 100%; height: 100%; object-fit: cover;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpRya8_gR1INeKh8mWD90SQWFuDB-tfhrXZemwmmFgGkdna_sKWGA7PHjii_2XLGf68743_AFxb9luaDknySSvZrByPAjG0kVtpMfyhxGxhCgHiysd4zToevT5SYhqHWgIPHjXHzFBwnkp52ChSEdO_sJKmfP-PQLM4vMvPJzP_vuXtdUloJLBt3PCtqEiuEnbCsc8aLano5Eh1ubwSC6QNraamTgEq4H_OsEQrckuHOaX5BIH0g4o">
+                    </div>
+                    <div class="card-body">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase;">Göz Hastalıkları</span>
+                        <h3 style="margin-top: 8px;">Doç. Dr. Elif Tekin</h3>
+                        <p>Katarakt ameliyatı, Akıllı Mercek, Lazer Tedavileri, Şaşılık ve Çocuk Göz Sağlığı uzmanı.</p>
+                        <div style="margin-top: 20px;">
+                            <a href="doktor-detay.html?doc=elif-tekin" class="btn btn-primary" style="width: 100%; justify-content: center;">Profil Detayı</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="https://www.ibnisinahastanesi.com.tr/ibn-i-sina-hastanesi.png" alt="İbni Sina Hastanesi Logo" style="height: 50px; object-fit: contain;">
+                </a>
+                <p>1998 yılından bu yana ileri tıp teknolojisini şefkatli bakım anlayışıyla birleştirerek şifa dağıtıyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Hızlı Erişim</h4>
+                <ul>
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="departmanlar.html">Tıbbi Birimler</a></li>
+                    <li><a href="doktorlar.html">Hekimlerimiz</a></li>
+                    <li><a href="hasta-rehberi.html">Hasta Rehberi</a></li>
+                    <li><a href="iletisim.html">İletişim & Nöbetçiler</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Bölümlerimiz</h4>
+                <ul>
+                    <li><a href="departmanlar.html#kardiyoloji">Kardiyoloji</a></li>
+                    <li><a href="departmanlar.html#pediatri">Çocuk Sağlığı</a></li>
+                    <li><a href="departmanlar.html#noroloji">Nöroloji</a></li>
+                    <li><a href="departmanlar.html#ortopedi">Ortopedi</a></li>
+                    <li><a href="departmanlar.html#dermatoloji">Dermatoloji</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Bize Ulaşın</h4>
+                <ul>
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        <span>Atatürk Mah. İbni Sina Cad. No:12, Çankaya, Ankara</span>
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <span>Call Center: 0328 813 50 10</span>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <span>info@ibnisinahastanesi.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 İbni Sina Hastanesi. Tüm hakları saklıdır.</p>
+            <p>Design with health in mind</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Filter Logic
+        const docSearch = document.getElementById('docSearch');
+        const filterDept = document.getElementById('filterDept');
+        const filterTitle = document.getElementById('filterTitle');
+        const docCards = document.querySelectorAll('.doc-card');
+
+        function performFiltering() {
+            const query = docSearch.value.trim().toLowerCase();
+            const selectedDept = filterDept.value;
+            const selectedTitle = filterTitle.value;
+
+            docCards.forEach(card => {
+                const dept = card.getAttribute('data-dept');
+                const title = card.getAttribute('data-title');
+                const name = card.getAttribute('data-name');
+
+                const nameMatch = name.includes(query);
+                const deptMatch = !selectedDept || dept === selectedDept;
+                const titleMatch = !selectedTitle || title === selectedTitle;
+
+                if (nameMatch && deptMatch && titleMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        docSearch.addEventListener('input', performFiltering);
+        filterDept.addEventListener('change', performFiltering);
+        filterTitle.addEventListener('change', performFiltering);
+
+        // Pre-fill filter from URL query if available
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const deptParam = params.get('dept');
+            const docParam = params.get('doc');
+            
+            if (deptParam) {
+                filterDept.value = deptParam;
+            }
+            if (docParam) {
+                docSearch.value = docParam.replace('-', ' ');
+            }
+            performFiltering();
+        });
+    </script>
+</body>
+</html>
